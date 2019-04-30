@@ -7,7 +7,7 @@
  */
 
 import React, { Component } from 'react';
-import { TextInput, StyleSheet, Text, View, TouchableOpacity, Alert } from 'react-native';
+import { Button, StyleSheet, Text, View, TouchableOpacity, Alert, Image } from 'react-native';
 import NotifService from './NotifService';
 import appConfig from './app.json';
 
@@ -26,23 +26,28 @@ export default class App extends Component<Props> {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>Example app react-native-push-notification</Text>
-        <View style={styles.spacer}></View>
-        <TextInput style={styles.textField} value={this.state.registerToken} placeholder="Register token" />
-        <View style={styles.spacer}></View>
-
-        <TouchableOpacity style={styles.button} onPress={() => { this.notif.localNotif() }}><Text>Local Notification (now)</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => { this.notif.scheduleNotif() }}><Text>Schedule Notification in 30s</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => { this.notif.cancelNotif() }}><Text>Cancel last notification (if any)</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => { this.notif.cancelAll() }}><Text>Cancel all notifications</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => { this.notif.checkPermission(this.handlePerm.bind(this)) }}><Text>Check Permission</Text></TouchableOpacity>
-
-        <View style={styles.spacer}></View>
-        <TextInput style={styles.textField} value={this.state.senderId} onChangeText={(e) => {this.setState({ senderId: e })}} placeholder="GCM ID" />
-        <TouchableOpacity style={styles.button} onPress={() => { this.notif.configure(this.onRegister.bind(this), this.onNotif.bind(this), this.state.senderId) }}><Text>Configure Sender ID</Text></TouchableOpacity>
-        {this.state.gcmRegistered && <Text>GCM Configured !</Text>}
-
-        <View style={styles.spacer}></View>
+        <Image style={styles.logo} source={require('./Images/logo.png')}/>
+        <View style={styles.spacer}/>
+        <Text style={styles.text}>3 BOUCLES EN ALARMES ET/OU A ACQUITTER</Text>
+        <TouchableOpacity style={styles.main_container} onPress={() => {this.notif.localNotif()}}>
+          <View style={styles.button}>
+          <Image style={styles.imageButton} source={require('./Images/hygrometry.png')}/>
+            <View style={styles.content_container}>
+              <View style={styles.header_container}>
+                <Text style={styles.textButton}>11 UU97533-12008</Text>
+              </View>
+              <View style={styles.percentage_container}>
+                <Text style={styles.textButton}>67%</Text>
+              </View>
+            </View>
+          </View>
+        </TouchableOpacity>
+          <View style={styles.spacer}/>
+          <Button style={styles.button} title='Schedule Notification in 30s' onPress={() => {this.notif.scheduleNotif()}}/>
+          <View style={styles.spacer}/>
+          <Button style={styles.button} title='Cancel last notification (if any)' onPress={() => {this.notif.cancelNotif()}}/>
+          <View style={styles.spacer}/>
+          <Button style={styles.button} title='Cancel all notifications' onPress={() => {this.notif.cancelAll()}}/>
       </View>
     );
   }
@@ -69,28 +74,41 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#4C626F',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  main_container: {
+    flexDirection: 'row',
+  },
+  content_container: {
+    flex: 1,
+    margin: 3
+  },
+  percentage_container: {
+    flex: 3,
+    flexDirection: 'row',
   },
   button: {
-    borderWidth: 1,
-    borderColor: "#000000",
+    borderWidth: 5,
+    borderColor: "#fff",
     margin: 5,
     padding: 5,
-    width: "70%",
-    backgroundColor: "#DDDDDD",
+    width: 200,
+    height: 90,
+    backgroundColor: "#FD5D54",
     borderRadius: 5,
   },
-  textField: {
-    borderWidth: 1,
-    borderColor: "#AAAAAA",
-    margin: 5,
-    padding: 5,
-    width: "70%"
+  textButton: {
+    flex: 3,
+    color: "#fff",
+    fontSize: 16,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  imageButton: {
+    alignItems: 'center',
+    height: 40,
+    width: 40,
+    margin: 3,
   },
   spacer: {
     height: 10,
@@ -99,5 +117,12 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 20,
     textAlign: "center",
+  },
+  logo: {
+    height: 76,
+    width: 253,
+  },
+  text: {
+    color: "#fff",
   }
 });
