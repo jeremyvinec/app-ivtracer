@@ -77,8 +77,6 @@ export default class App extends Component<Props> {
           <View style={styles.spacer}/>
           <Button style={styles.button} title='Schedule Notification in 30s' onPress={() => {this.notif.scheduleNotif()}}/>
           <View style={styles.spacer}/>
-          <Button style={styles.button} title='Cancel last notification (if any)' onPress={() => {this.notif.cancelNotif()}}/>
-          <View style={styles.spacer}/>
           <Button style={styles.button} title='Cancel all notifications' onPress={() => {this.notif.cancelAll()}}/>
       </View>
     );
@@ -147,7 +145,7 @@ const styles = StyleSheet.create({
   },
   textButton:{
     color: "#fff",
-    fontSize: 18,
+    fontSize: 17,
     fontWeight: 'bold',
     paddingRight: 65
   },
