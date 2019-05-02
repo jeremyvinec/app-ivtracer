@@ -28,16 +28,48 @@ export default class App extends Component<Props> {
       <View style={styles.container}>
         <Image style={styles.logo} source={require('./Images/logo.png')}/>
         <View style={styles.spacer}/>
-        <Text style={styles.text}>3 BOUCLES EN ALARMES ET/OU A ACQUITTER</Text>
-        <TouchableOpacity style={styles.main_container} onPress={() => {this.notif.localNotif()}}>
-          <View style={styles.button}>
+        <View>
+          <Text style={styles.text}>3 BOUCLES EN ALARMES</Text>
+          <Text style={styles.text}>ET/OU A ACQUITTER</Text>
+        </View>
+        <View style={styles.spacer}/>
+        <TouchableOpacity onPress={() => {this.notif.localNotif()}}>
+          <View style={[styles.button, styles.main_container]}>
           <Image style={styles.imageButton} source={require('./Images/hygrometry.png')}/>
             <View style={styles.content_container}>
               <View style={styles.header_container}>
-                <Text style={styles.textButton}>11 UU97533-12008</Text>
+                <Text style={styles.title_text}>11 UU97533-12008</Text>
               </View>
               <View style={styles.percentage_container}>
                 <Text style={styles.textButton}>67%</Text>
+                <Image source={require('./Images/ArrowUp.png')}/>
+              </View>
+            </View>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => {this.notif.localNotif()}}>
+          <View style={[styles.button, styles.jaune, styles.main_container]}>
+          <Image style={styles.imageButton} source={require('./Images/temperature.png')}/>
+            <View style={styles.content_container}>
+              <View style={styles.header_container}>
+                <Text style={styles.title_text}>44 DP11000-11019</Text>
+              </View>
+              <View style={styles.percentage_container}>
+                <Text style={styles.textButton}>31°C</Text>
+                <Image source={require('./Images/ArrowDown.png')}/>
+              </View>
+            </View>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => {this.notif.localNotif()}}>
+          <View style={[styles.button, styles.vert, styles.main_container]}>
+          <Image style={styles.imageButton} source={require('./Images/hygrometry.png')}/>
+            <View style={styles.content_container}>
+              <View style={styles.header_container}>
+                <Text style={styles.title_text}>44 DP11000-11019</Text>
+              </View>
+              <View style={styles.percentage_container}>
+                <Text style={styles.textButton}>876 ppm</Text>
               </View>
             </View>
           </View>
@@ -72,20 +104,22 @@ export default class App extends Component<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#4C626F',
   },
   main_container: {
+    height: 90,
     flexDirection: 'row',
   },
   content_container: {
     flex: 1,
-    margin: 3
+  },
+  header_container: {
+    flexDirection: 'row'
   },
   percentage_container: {
-    flex: 3,
     flexDirection: 'row',
+    marginTop: 1
   },
   button: {
     borderWidth: 5,
@@ -96,19 +130,31 @@ const styles = StyleSheet.create({
     height: 90,
     backgroundColor: "#FD5D54",
     borderRadius: 5,
-  },
-  textButton: {
-    flex: 3,
-    color: "#fff",
-    fontSize: 16,
-    justifyContent: 'center',
     alignItems: 'center',
+    justifyContent: 'center',
+  },
+  jaune: {
+    backgroundColor: '#FDB44B' 
+  },
+  vert: {
+    backgroundColor: '#84EF42'
+  },
+  title_text: {
+    color: "#fff",
+    fontSize: 14,
+    fontWeight: 'bold',
+    marginTop: 5
+  },
+  textButton:{
+    color: "#fff",
+    fontSize: 18,
+    fontWeight: 'bold',
+    paddingRight: 65
   },
   imageButton: {
-    alignItems: 'center',
     height: 40,
     width: 40,
-    margin: 3,
+    margin: 2,
   },
   spacer: {
     height: 10,
@@ -119,10 +165,13 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   logo: {
+    marginTop: 50,
     height: 76,
     width: 253,
   },
   text: {
     color: "#fff",
+    fontWeight: "bold",
+    textAlign: 'center'
   }
 });
