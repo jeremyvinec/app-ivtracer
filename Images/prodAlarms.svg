@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="22px" height="24px" viewBox="0 0 22 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>Shape</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="IHM-14-nov-2016-applis-TR-et-AR" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="TR-Données-de-fonctionnement" transform="translate(-1777.000000, -14.000000)" fill="#FFFFFF">
+            <g id="voyant-alarmes-TSV" transform="translate(1762.000000, 0.000000)">
+                <path d="M28.4444444,35.6 C28.4444444,36.9254834 27.3500294,38 26,38 C24.6499706,38 23.5555556,36.9254834 23.5555556,35.6 L28.4444444,35.6 L28.4444444,35.6 Z M26,14 C26.6750147,14 27.2222222,14.5372583 27.2222222,15.2 L27.2222222,16.496 C30.6933333,17.072 33.3333333,20.036 33.3333333,23.6 L33.3333333,30.8 L37,34.4 L15,34.4 L18.6666667,30.8 L18.6666667,23.6 C18.6666667,20.036 21.3066667,17.072 24.7777778,16.496 L24.7777778,15.2 C24.7777778,14.5372583 25.3249853,14 26,14 L26,14 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

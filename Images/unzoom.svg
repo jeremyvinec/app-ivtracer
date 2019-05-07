@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="17px" viewBox="0 0 14 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>unzoom</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="unzoom" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M0,3 L0,4.71428571 L14,4.71428571 L14,3 L0,3 Z M0,8.14285714 L14,8.14285714 L14,6.42857143 L0,6.42857143 L0,8.14285714 Z M0,15 L14,15 L14,13.2857143 L0,13.2857143 L0,15 Z M0,11.5714286 L14,11.5714286 L14,9.85714286 L0,9.85714286 L0,11.5714286 Z" fill="#000000" fill-rule="nonzero"></path>
+    </g>
+</svg>

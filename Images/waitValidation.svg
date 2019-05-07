@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="22px" viewBox="0 0 18 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>validation-en-attente</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Local" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(-1150.000000, -156.000000)" id="champ-mode-de-fonctionnement-copy" fill="#FFA600">
+            <g transform="translate(821.000000, 150.000000)">
+                <path d="M338,6 L329,10 L329,16 C329,21.55 332.84,26.74 338,28 C343.16,26.74 347,21.55 347,16 L347,10 L338,6 Z M337,10 L339,10 L339,21 L337,21 L337,10 L337,10 Z M339,23 L339,25 L337,25 L337,23 L339,23 Z" id="validation-en-attente"></path>
+            </g>
+        </g>
+    </g>
+</svg>

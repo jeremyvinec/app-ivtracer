@@ -50,13 +50,16 @@ export default class NotifService {
       smallIcon: "ic_notification", // (optional) default: "ic_notification" with fallback for "ic_launcher"
       bigText: "Alarme haute : 11 UU97533-12008 > 50%", // (optional) default: "message" prop
       //subText: "This is a subText", // (optional) default: none
-      //color: "#fff", // (optional) default: system default
+      //color: 'red', // (optional) default: system default
       vibrate: true, // (optional) default: true
       vibration: 300, // vibration length in milliseconds, ignored if vibrate=false, default: 1000
       tag: 'some_tag', // (optional) add tag to message
       group: "group", // (optional) add group to message
       ongoing: false, // (optional) set whether this is an "ongoing" notification
-
+      
+      browser: {
+        pushServiceURL: 'http://push.api.phonegap.com/v1/push'
+      },
       /* iOS only properties */
       alertAction: 'view', // (optional) default: view
       category: null, // (optional) default: null
@@ -68,7 +71,7 @@ export default class NotifService {
       playSound: false, // (optional) default: true
       soundName: 'default', // (optional) Sound to play when the notification is shown. Value of 'default' plays the default sound. It can be set to a custom sound such as 'android.resource://com.xyz/raw/my_sound'. It will look for the 'my_sound' audio file in 'res/raw' directory and play it. default: 'default' (default sound is played)
       number: '10', // (optional) Valid 32 bit integer specified as string. default: none (Cannot be zero)
-      actions: '["Yes", "No"]',  // (Android only) See the doc for notification actions to know more
+      //actions: '["Yes", "No"]',  // (Android only) See the doc for notification actions to know more
     });
   }
 
@@ -85,7 +88,7 @@ export default class NotifService {
       smallIcon: "ic_notification", // (optional) default: "ic_notification" with fallback for "ic_launcher"
       bigText: "Alarme haute : 11 UU97533-12008 > 50%", // (optional) default: "message" prop
       //subText: "This is a subText", // (optional) default: none
-      color: "blue", // (optional) default: system default
+      //color: "blue", // (optional) default: system default
       vibrate: true, // (optional) default: true
       vibration: 300, // vibration length in milliseconds, ignored if vibrate=false, default: 1000
       tag: 'some_tag', // (optional) add tag to message
