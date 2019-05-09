@@ -57,9 +57,6 @@ export default class NotifService {
       group: "group", // (optional) add group to message
       ongoing: false, // (optional) set whether this is an "ongoing" notification
       
-      browser: {
-        pushServiceURL: 'http://push.api.phonegap.com/v1/push'
-      },
       /* iOS only properties */
       alertAction: 'view', // (optional) default: view
       category: null, // (optional) default: null
