@@ -10,19 +10,31 @@ import React from 'react';
 import { Button, StyleSheet, Text, View, TouchableOpacity, Alert, Image } from 'react-native';
 import NotifService from '../NotifService';
 import appConfig from '../app.json';
+import axios from 'axios'
 
 class Display extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      senderId: appConfig.senderID
+      senderId: appConfig.senderID,
+      username: '',
     };
-
+    this.handleClick = this.handleClick.bind(this);
     this.notif = new NotifService(this.onRegister.bind(this), this.onNotif.bind(this));
   }
 
+  componentDidMount(){
+    this.handleClick();
+  }
+
+  handleClick () {
+    axios.get('https://api.github.com/users/maecapozzi')
+      .then(response => this.setState({username: response.data.name}))
+  }
+
   render() {
+    console.log(this.handleClick)
     return (
       <View style={styles.container}>
         <Image style={styles.logo} source={require('../Images/logo.png')}/>
