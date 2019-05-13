@@ -15,10 +15,10 @@ import axios from 'axios'
 class Display extends React.Component {
 
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       senderId: appConfig.senderID,
-      username: '',
+      thumbnails: '',
     };
     this.handleClick = this.handleClick.bind(this);
     this.notif = new NotifService(this.onRegister.bind(this), this.onNotif.bind(this));
@@ -28,15 +28,27 @@ class Display extends React.Component {
     this.handleClick();
   }
 
-  handleClick () {
-    axios.get('https://api.github.com/users/maecapozzi')
-      .then(response => this.setState({username: response.data.name}))
+  handleClick() {
+    fetch('https://api.github.com/users/jeremyvinec')
+      .then(response => {
+        response.json().then(response => {
+          this.setState({
+            thumbnails: response.name
+          })
+        })
+      })
+      .catch(error => {
+        console.log(error.message);
+          throw error;
+        });
   }
 
   render() {
-    console.log(this.handleClick)
+    console.log(this.state.thumbnails)
     return (
       <View style={styles.container}>
+        <Button title={'ok'} onPress={() => this.handleClick()}></Button>
+        <Text>{this.state.thumbnails}</Text>
         <Image style={styles.logo} source={require('../Images/logo.png')}/>
         <View style={styles.spacer}/>
         <View>
