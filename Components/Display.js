@@ -10,7 +10,6 @@ import React from 'react';
 import { Button, StyleSheet, Text, View, TouchableOpacity, Alert, Image } from 'react-native';
 import NotifService from '../NotifService';
 import appConfig from '../app.json';
-import axios from 'axios'
 
 class Display extends React.Component {
 
@@ -20,22 +19,28 @@ class Display extends React.Component {
       senderId: appConfig.senderID,
       thumbnails: '',
     };
-    this.handleClick = this.handleClick.bind(this);
+    this._recoverThumbnails = this._recoverThumbnails.bind(this);
     this.notif = new NotifService(this.onRegister.bind(this), this.onNotif.bind(this));
   }
 
   componentDidMount(){
-    this.handleClick();
+    
   }
 
-  handleClick() {
-    fetch('https://api.github.com/users/jeremyvinec')
+  _recoverThumbnails() {
+    fetch('https://raw.githubusercontent.com/jeremyvinec/thumbnails-json/master/data.json')
       .then(response => {
-        response.json().then(response => {
-          this.setState({
-            thumbnails: response.name
+        if(response.ok){
+          response.json().then(response => {
+            console.log(response)
+            console.log(response['thumbnails'][0])
+            this.setState({
+              thumbnails: response['thumbnails'][0]
+            })
           })
-        })
+        }else{
+          console.log('failed')
+        }
       })
       .catch(error => {
         console.log(error.message);
@@ -44,10 +49,9 @@ class Display extends React.Component {
   }
 
   render() {
-    console.log(this.state.thumbnails)
     return (
       <View style={styles.container}>
-        <Button title={'ok'} onPress={() => this.handleClick()}></Button>
+        <Button title={'ok'} onPress={() => this._recoverThumbnails()}></Button>
         <Text>{this.state.thumbnails}</Text>
         <Image style={styles.logo} source={require('../Images/logo.png')}/>
         <View style={styles.spacer}/>
