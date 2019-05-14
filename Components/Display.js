@@ -17,30 +17,27 @@ class Display extends React.Component {
     super(props)
     this.state = {
       senderId: appConfig.senderID,
-      thumbnails: '',
+      thumbnails: [],
     };
     this._recoverThumbnails = this._recoverThumbnails.bind(this);
     this.notif = new NotifService(this.onRegister.bind(this), this.onNotif.bind(this));
   }
 
   componentDidMount(){
-    
+    this._recoverThumbnails()
   }
 
   _recoverThumbnails() {
     fetch('https://raw.githubusercontent.com/jeremyvinec/thumbnails-json/master/data.json')
       .then(response => {
-        if(response.ok){
-          response.json().then(response => {
-            console.log(response)
-            console.log(response['thumbnails'][0])
+          response.json().then(data => {
+            console.log(data)
+            console.log(data['thumbnails'][0])
+            console.log(data.thumbnails[0].name)
             this.setState({
-              thumbnails: response['thumbnails'][0]
+              thumbnails : [...this.state.thumbnails, ...data.results]
             })
           })
-        }else{
-          console.log('failed')
-        }
       })
       .catch(error => {
         console.log(error.message);
