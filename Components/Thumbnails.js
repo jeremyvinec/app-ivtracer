@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, FlatList, Button, View, Text } from 'react-native'
+import { StyleSheet, Button, View, Text } from 'react-native'
 import ThumbnailsList from './ThumbnailsList'
 import { getThumbnails } from '../API/Api'
 
@@ -18,7 +18,12 @@ class Thumbnails extends React.Component {
     
       _recoverThumbnails() {
         getThumbnails().then(data => {
+            const returnedTarget = JSON.stringify(Object.assign(data));
+            console.log(returnedTarget)
             console.log(data['thumbnails'][0])
+            this.setState({
+                thumbnails: this.state.thumbnails.concat(data.thumbnails) // ajouter les vignettes à ceux que l'on a déjà récupérés, deux copies de nos tableaux pour que la concaténation fonctionne
+              })
         })
       } 
 
@@ -26,7 +31,6 @@ class Thumbnails extends React.Component {
         return(
             <View style={styles.main_container}>
                 <Button title='rechercher' onPress={() => {this._recoverThumbnails()}} />
-                <Text>{this.state.thumbnails}</Text>
                 <ThumbnailsList
                     thumbnails={this.state.thumbnails}
                     recoverThumbnails={this._recoverThumbnails}

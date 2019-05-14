@@ -16,12 +16,9 @@ class ThumbnailsList extends React.Component {
         <FlatList
           style={styles.list}
           data={this.props.thumbnails}
-          keyExtractor={(item) => item.id.toString()}
-          renderItem={({item}) => (
-            <ThumbnailsItem
-              thumbnails={item}
-            />
-          )}
+          extraData={this.state}
+          keyExtractor={(item) => item.id}
+          renderItem={({item}) => ( <ThumbnailsItem thumbnails={item}/> )}
           onEndReachedThreshold={0.5}
           onEndReached={() => {this.props.recoverThumbnails()}}
         />
