@@ -30,11 +30,11 @@ class Thumbnails extends React.Component {
                 <Image style={styles.logo} source={require('../Images/logo.png')}/>
                 <View style={styles.spacer}/>
                 <View>
-                    <Text style={styles.text}>3 BOUCLES EN ALARMES</Text>
-                    <Text style={styles.text}>ET/OU A ACQUITTER</Text>
+                    <Text style={styles.text}>{this.state.thumbnails.length} BOUCLES EN ALARMES ET/OU A ACQUITTER</Text>
                 </View>
                 <View style={styles.spacer}/>
                 <ThumbnailsList
+                    style={styles.thumbnails_list}
                     thumbnails={this.state.thumbnails}
                     recoverThumbnails={this._recoverThumbnails}
                  />
@@ -118,6 +118,9 @@ const styles = StyleSheet.create({
       color: "#fff",
       fontWeight: "bold",
       textAlign: 'center'
+    },
+    thumbnails_list : {
+      height: 40
     }
 })
 
