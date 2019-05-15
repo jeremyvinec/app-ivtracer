@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Button, View, Text } from 'react-native'
+import { StyleSheet, View, Text, Image } from 'react-native'
 import ThumbnailsList from './ThumbnailsList'
 import { getThumbnails } from '../API/Api'
 
@@ -18,9 +18,6 @@ class Thumbnails extends React.Component {
     
       _recoverThumbnails() {
         getThumbnails().then(data => {
-            const returnedTarget = JSON.stringify(Object.assign(data));
-            console.log(returnedTarget)
-            console.log(data['thumbnails'][0])
             this.setState({
                 thumbnails: this.state.thumbnails.concat(data.thumbnails) // ajouter les vignettes à ceux que l'on a déjà récupérés, deux copies de nos tableaux pour que la concaténation fonctionne
               })
@@ -29,8 +26,14 @@ class Thumbnails extends React.Component {
 
     render(){
         return(
-            <View style={styles.main_container}>
-                <Button title='rechercher' onPress={() => {this._recoverThumbnails()}} />
+            <View style={styles.container}>
+                <Image style={styles.logo} source={require('../Images/logo.png')}/>
+                <View style={styles.spacer}/>
+                <View>
+                    <Text style={styles.text}>3 BOUCLES EN ALARMES</Text>
+                    <Text style={styles.text}>ET/OU A ACQUITTER</Text>
+                </View>
+                <View style={styles.spacer}/>
                 <ThumbnailsList
                     thumbnails={this.state.thumbnails}
                     recoverThumbnails={this._recoverThumbnails}
@@ -44,9 +47,77 @@ const styles = StyleSheet.create({
     list: {
         flex: 1
     },
+    container: {
+      flex: 1,
+      alignItems: 'center',
+      backgroundColor: '#4C626F',
+    },
     main_container: {
-        flex: 1,
-        marginTop: 20,
+      height: 90,
+      flexDirection: 'row',
+    },
+    content_container: {
+      flex: 1,
+    },
+    header_container: {
+      flexDirection: 'row'
+    },
+    percentage_container: {
+      flexDirection: 'row',
+      marginTop: 1
+    },
+    button: {
+      borderWidth: 5,
+      borderColor: "#fff",
+      margin: 5,
+      padding: 5,
+      width: 200,
+      height: 90,
+      backgroundColor: "#FD5D54",
+      borderRadius: 5,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    jaune: {
+      backgroundColor: '#FDB44B' 
+    },
+    vert: {
+      backgroundColor: '#84EF42'
+    },
+    title_text: {
+      color: "#fff",
+      fontSize: 14,
+      fontWeight: 'bold',
+      marginTop: 5
+    },
+    textButton:{
+      color: "#fff",
+      fontSize: 17,
+      fontWeight: 'bold',
+      paddingRight: 65
+    },
+    imageButton: {
+      height: 40,
+      width: 40,
+      margin: 2,
+    },
+    spacer: {
+      height: 10,
+    },
+    title: {
+      fontWeight: "bold",
+      fontSize: 20,
+      textAlign: "center",
+    },
+    logo: {
+      marginTop: 50,
+      height: 76,
+      width: 253,
+    },
+    text: {
+      color: "#fff",
+      fontWeight: "bold",
+      textAlign: 'center'
     }
 })
 

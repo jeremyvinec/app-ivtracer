@@ -10,11 +10,11 @@ class ThumbnailsItem extends React.Component {
           <Image style={styles.imageButton} source={require('../Images/hygrometry.png')}/>
             <View style={styles.content_container}>
               <View style={styles.header_container}>
-                <Text style={styles.title_text}>11 UU97533-12008</Text>
+                <Text style={styles.title_text}>{thumbnails.name}</Text>
               </View>
               <View style={styles.percentage_container}>
-                <Text style={styles.textButton}>67%</Text>
-                <Image source={require('../Images/ArrowUp.png')}/>
+                <Text className="float-sm-left" style={styles.textButton}>{thumbnails.value}{' '}{thumbnails.unit}</Text>
+                <Image className="float-sm-right" style={styles.arrow} source={require('../Images/ArrowUp.png')}/>
               </View>
             </View>
           </View>
@@ -41,7 +41,8 @@ class ThumbnailsItem extends React.Component {
     },
     percentage_container: {
       flexDirection: 'row',
-      marginTop: 1
+      marginTop: 1,
+      justifyContent: 'space-between'
     },
     button: {
       borderWidth: 5,
@@ -71,7 +72,6 @@ class ThumbnailsItem extends React.Component {
       color: "#fff",
       fontSize: 17,
       fontWeight: 'bold',
-      paddingRight: 65
     },
     imageButton: {
       height: 40,
@@ -95,6 +95,10 @@ class ThumbnailsItem extends React.Component {
       color: "#fff",
       fontWeight: "bold",
       textAlign: 'center'
+    },
+    arrow: {
+      height: 20,
+      width: 20
     }
   });
   
