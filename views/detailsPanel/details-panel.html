@@ -1,0 +1,29 @@
+<div class="details-panel" ng-class="detailsPanelOpened ? 'details-panel-show' : 'details-panel-hidden'">
+    <div>
+        <details-panel-header></details-panel-header>
+
+        <div ng-hide="loadingDetailsThumbnail" class="details-panel-content container-fluid">
+            <div ng-if="errorDetailsThumbnail" class="alert alert-danger">
+                <span class="glyphicon glyphicon-{{errorDetailsThumbnail.icon}}"></span> {{'error.errorToRecover' | i18next}} {{errorDetailsThumbnail.message | i18next}}
+            </div>
+
+            <div ng-show="detailsThumbnail.alarms.length !== 0 || detailsThumbnail.qualityParameters.length !== 0" ng-hide="errorDetailsThumbnail.hide === 'details'" class="row">
+                <div class="col-md-7 col-lg-8 alarms-not-ack-container">
+                    <table-alarms></table-alarms>
+                    <form-auth></form-auth>
+                </div>
+
+                <div class="col-md-5 col-lg-4 quality-parameters-container">
+                    <quality-parameters></quality-parameters>
+                </div>
+            </div>
+
+            <div ng-if="displayGraph" class="curves-container">
+                <p ng-if="loadingChart" class="loading-chart">{{'highcharts.loading' | i18next}}</p>
+                <highchart ng-if="!loadingChart" config="chart"></highchart>
+            </div>
+        </div>
+    </div>
+
+    <spinner ng-show="loadingDetailsThumbnail"></spinner>
+</div>

@@ -15,9 +15,25 @@ class Thumbnails extends React.Component {
       componentDidMount(){
         this._recoverThumbnails()
       }
+
+      /*id(){
+        return '_' + Math.random().toString(36).substr(2,9)
+      }
+    
+      replaceId( field, oldvalue, newvalue){
+        getThumbnails().then(data => {
+          for(var k=0; k < data.lenght; ++k){
+            if( oldvalue == data[k][field]){
+              data[k][field] = newvalue;
+            }
+          }
+          return data
+        })
+      }*/
     
       _recoverThumbnails() {
         getThumbnails().then(data => {
+          //console.log(data)
             this.setState({
                 thumbnails: this.state.thumbnails.concat(data.thumbnails) // ajouter les vignettes à ceux que l'on a déjà récupérés, deux copies de nos tableaux pour que la concaténation fonctionne
               })
@@ -33,11 +49,12 @@ class Thumbnails extends React.Component {
                     <Text style={styles.text}>{this.state.thumbnails.length} BOUCLES EN ALARMES ET/OU A ACQUITTER</Text>
                 </View>
                 <View style={styles.spacer}/>
-                <ThumbnailsList
-                    style={styles.thumbnails_list}
-                    thumbnails={this.state.thumbnails}
-                    recoverThumbnails={this._recoverThumbnails}
-                 />
+                <View style={styles.thumbnails_list}>
+                  <ThumbnailsList
+                      thumbnails={this.state.thumbnails}
+                      recoverThumbnails={this._recoverThumbnails}
+                    />
+                </View>
           </View>
         )
     }
@@ -120,7 +137,7 @@ const styles = StyleSheet.create({
       textAlign: 'center'
     },
     thumbnails_list : {
-      height: 40
+      height: '65%'
     }
 })
 

@@ -45,8 +45,8 @@ class ThumbnailsItem extends React.Component {
       justifyContent: 'space-between'
     },
     button: {
-      borderWidth: 5,
-      borderColor: "#fff",
+      //borderWidth: 5,
+      //borderColor: "#fff",
       margin: 5,
       padding: 5,
       width: 200,
@@ -55,6 +55,11 @@ class ThumbnailsItem extends React.Component {
       borderRadius: 5,
       alignItems: 'center',
       justifyContent: 'center',
+      /*'hover': {
+        border: '1px solid black',
+        //borderWidth: 5,
+        borderColor: "#fff",
+      },*/
     },
     jaune: {
       backgroundColor: '#FDB44B' 

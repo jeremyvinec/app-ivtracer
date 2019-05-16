@@ -48,8 +48,6 @@ class Display extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Button title={'ok'} onPress={() => this._recoverThumbnails()}></Button>
-        <Text>{this.state.thumbnails}</Text>
         <Image style={styles.logo} source={require('../Images/logo.png')}/>
         <View style={styles.spacer}/>
         <View>

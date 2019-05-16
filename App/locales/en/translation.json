@@ -1,0 +1,111 @@
+{
+  "actions": {
+    "ack": "Acknowledgement",
+    "close": "Close"
+  },
+  "alarm": "Alarm",
+  "alarmDuringTheLast24Hours": "{{count}} alarm during the last 24 hours",
+  "alarmDuringTheLast24Hours_plural": "{{count}} alarms during the last 24 hours",
+  "alarmToBeAck": "{{count}} alarm to be acknowledged",
+  "alarmToBeAck_plural": "{{count}} alarms to be acknowledged",
+  "appActions": {
+    "applicationWillManualUpdate": "Force a manual update",
+    "applicationWillReconnect": "The application tries to reconnect to the server, and",
+    "applicationWillUpdate": "update",
+    "applicationWillUpdateAutomatically": "automatically when it is accessible again.."
+  },
+  "closePanel": "Close panel",
+  "error": {
+    "errorAllDetailsThumbnail": "thumbnail details and graph",
+    "errorDetailsThumbnail": "thumbnail details",
+    "errorDetailsThumbnailGraph": "data for graph",
+    "errorRecoverThumbnails": "Error when recovering thumbnails",
+    "errorToRecover": "Error when recovering",
+    "noDataDisplayedCheckConfigurationAndServerConnection": "No data to display: check your configuration and connection with the IVTracer server",
+    "unreacheableServerSinceDateTime": "The server is unreachable. The information displayed is no longer updated since the {{date}} at {{time}}"
+  },
+  "format": {
+    "date": "YYYY/MM/DD",
+    "datetime": "YYYY/MM/DD hh:mm:ss a",
+    "fullTime": "hh:mm:ss a",
+    "time": "hh:mm a"
+  },
+  "formAuth": {
+    "ackError": "Error when acknowledging alarms",
+    "ackSuccess": "{{count}} alarm successfully acknowledged",
+    "ackSuccess_plural": "{{count}} alarms successfully acknowledged",
+    "comment": "Comment",
+    "identifier": "Identifier",
+    "invalidIdentification": "Invalid login or password",
+    "password": "Password",
+    "unableAck": "Unable to acknowledge",
+    "userUnableAck": "You have no right to acknowledge"
+  },
+  "highAlarm": "High alarm",
+  "highcharts": {
+    "contextButtonTitle": "Export chart",
+    "decimalPoint": ".",
+    "downloadJPEG": "Download picture JPEG",
+    "downloadPDF": "Download document PDF",
+    "downloadPNG": "Download picture PNG",
+    "downloadSVG": "Download document SVG",
+    "hour": "%l:%M %p",
+    "loading": "Loading…",
+    "months": "January,February,March,April,May,June,July,August,September,October,November,December",
+    "noData": "No data to display",
+    "printChart": "Print",
+    "resetZoom": "Reset zoom",
+    "resetZoomTitle": "Reset zoom level 1:1",
+    "shortMonths": "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec",
+    "thousandsSep": ",",
+    "weekdays": "Sunday,Monday,Tuesday,Wednesdat,Thursday,Friday,Saturday"
+  },
+  "highPrealarm": "High prealarm",
+  "inProgress": "in progress",
+  "lowAlarm": "Low alarm",
+  "lowPrealarm": "Low prealarm",
+  "noAlarm": "No alarm",
+  "noAlarmToDisplay": "No alarm to display",
+  "noDataAvailable": "No data available",
+  "offline": "Offline",
+  "prealarm": "Prealarm",
+  "probeCurve": {
+    "avg": "Average",
+    "current": "Current",
+    "highTh": "High Th.",
+    "inAlarm": "Alarm",
+    "inProd": "In prod",
+    "lowTh": "Low Th."
+  },
+  "probeInAlarmAndOrNeedAck": "{{count}} probe in alarm and/or to be acknowledged",
+  "probeInAlarmAndOrNeedAck_plural": "{{count}} probes in alarm and/or to be acknowledged",
+  "productionMode": {
+    "hs": "HS",
+    "prod": "Prod",
+    "qaa": "AAQ",
+    "qai": "IAQ"
+  },
+  "qualityParameters": {
+    "acknowledgementMode": "Acknowledgement mode",
+    "appearanceDelay": "Appearance delay",
+    "disappearanceDelay": "Disappearance delay",
+    "highThreshold": "High threshold",
+    "hysteresis": "Hysteresis",
+    "lowThreshold": "Low threshold",
+    "provisional": "Provisional",
+    "qualityParameters": "Quality parameters",
+    "threshold": "Threshold",
+    "validated": "Validated"
+  },
+  "roomOutOfProd": "Room out of production",
+  "tableHeader": {
+    "ack": "Acknowledgement",
+    "begin": "Begin",
+    "duration": "Duration",
+    "end": "End",
+    "text": "Text"
+  },
+  "validatedValue": "Validated value :",
+  "with": "With",
+  "without": "Without"
+}

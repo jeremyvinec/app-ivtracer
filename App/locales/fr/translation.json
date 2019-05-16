@@ -1,0 +1,110 @@
+{
+  "actions": {
+    "ack": "Acquitter",
+    "close": "Fermer"
+  },
+  "alarm": "Alarme",
+  "alarmDuringTheLast24Hours": "{{count}} alarme durant les 24 dernières heures",
+  "alarmDuringTheLast24Hours_plural": "{{count}} alarmes durant les 24 dernières heures",
+  "alarmToBeAck": "{{count}} alarme à acquitter",
+  "alarmToBeAck_plural": "{{count}} alarmes à acquitter",
+  "appActions": {
+    "applicationWillManualUpdate": "Forcer une mise à jour manuelle",
+    "applicationWillReconnect": "L'application tente de se reconnecter au serveur, et se",
+    "applicationWillUpdate": "mettra à jour",
+    "applicationWillUpdateAutomatically": "automatiquement quand il sera de nouveau accessible."
+  },
+  "closePanel": "Fermer le panneau",
+  "error": {
+    "errorAllDetailsThumbnail": "des détails de la vignette et des données pour le graphique",
+    "errorDetailsThumbnail": "des détails de la vignette",
+    "errorDetailsThumbnailGraph": "des données pour le graphique",
+    "errorToRecover": "Erreur lors de la récupération",
+    "noDataDisplayedCheckConfigurationAndServerConnection": "Aucune donnée à afficher : vérifier votre configuration ainsi que la connexion avec le serveur IVTracer",
+    "unreacheableServerSinceDateTime": "Le serveur est injoignable. Les informations affichées ne sont plus mises à jour depuis le {{date}} à {{time}}"
+  },
+  "format": {
+    "date": "DD/MM/YYYY",
+    "datetime": "DD/MM/YYYY HH:mm:ss",
+    "fullTime": "HH:mm:ss",
+    "time": "HH:mm"
+  },
+  "formAuth": {
+    "ackError": "Erreur lors de l'acquittement des alarmes",
+    "ackSuccess": "{{count}} alarme acquittée avec succès",
+    "ackSuccess_plural": "{{count}} alarmes acquittées avec succès",
+    "comment": "Commentaire",
+    "identifier": "Identifiant",
+    "invalidIdentification": "Identifiant ou mot de passe invalide",
+    "password": "Mot de passe",
+    "unableAck": "Acquittement impossible",
+    "userUnableAck": "Vous n'avez pas le droit d'acquitter"
+  },
+  "highAlarm": "Alarme haute",
+  "highcharts": {
+    "contextButtonTitle": "Exporter le graphique",
+    "decimalPoint": ",",
+    "downloadJPEG": "Télécharger en image JPEG",
+    "downloadPDF": "Télécharger en document PDF",
+    "downloadPNG": "Télécharger en image PNG",
+    "downloadSVG": "Télécharger en document Vectoriel",
+    "hour": "%H:%M",
+    "loading": "Chargement en cours…",
+    "months": "Janvier,Février,Mars,Avril,Mai,Juin,Juillet,Août,Septembre,Octobre,Novembre,Décembre",
+    "noData": "Pas d'information à afficher",
+    "printChart": "Imprimer",
+    "resetZoom": "Réinitialiser le zoom",
+    "resetZoomTitle": "Réinitialiser le zoom au niveau 1:1",
+    "shortMonths": "Jan,Fev,Mar,Avr,Mai,Juin,Juil,Aout,Sept,Oct,Nov,Dec",
+    "thousandsSep": " ",
+    "weekdays": "Dimanche,Lundi,Mardi,Mercredi,Jeudi,Vendredi,Samedi"
+  },
+  "highPrealarm": "Pré-alarme haute",
+  "inProgress": "en cours",
+  "lowAlarm": "Alarme basse",
+  "lowPrealarm": "Pré-alarme basse",
+  "noAlarm": "Aucune alarme",
+  "noAlarmToDisplay": "Aucune alarme à afficher",
+  "noDataAvailable": "Aucune donnée disponible",
+  "offline": "Hors ligne",
+  "prealarm": "Pré-alarme",
+  "probeCurve": {
+    "avg": "Lissée",
+    "current": "Courante",
+    "highTh": "Seuil haut",
+    "inAlarm": "En alarme",
+    "inProd": "En prod",
+    "lowTh": "Seuil bas"
+  },
+  "probeInAlarmAndOrNeedAck": "{{count}} boucle en alarme et/ou à acquitter",
+  "probeInAlarmAndOrNeedAck_plural": "{{count}} boucles en alarme et/ou à acquitter",
+  "productionMode": {
+    "hs": "HS",
+    "prod": "Prod",
+    "qaa": "QAA",
+    "qai": "QAI"
+  },
+  "qualityParameters": {
+    "acknowledgementMode": "Mode d'acquittement",
+    "appearanceDelay": "Délai d'apparition",
+    "disappearanceDelay": "Délai de disparition",
+    "highThreshold": "Seuil haut",
+    "hysteresis": "Hystérésis",
+    "lowThreshold": "Seuil bas",
+    "provisional": "Provisoires",
+    "qualityParameters": "Paramètres qualité",
+    "threshold": "Seuil",
+    "validated": "Validés"
+  },
+  "roomOutOfProd": "Local hors production",
+  "tableHeader": {
+    "ack": "Acquittement",
+    "begin": "Début",
+    "duration": "Durée",
+    "end": "Fin",
+    "text": "Texte"
+  },
+  "validatedValue": "Valeur validé :",
+  "with": "Avec",
+  "without": "Sans"
+}
