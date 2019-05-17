@@ -15,25 +15,10 @@ class Thumbnails extends React.Component {
       componentDidMount(){
         this._recoverThumbnails()
       }
-
-      /*id(){
-        return '_' + Math.random().toString(36).substr(2,9)
-      }
-    
-      replaceId( field, oldvalue, newvalue){
-        getThumbnails().then(data => {
-          for(var k=0; k < data.lenght; ++k){
-            if( oldvalue == data[k][field]){
-              data[k][field] = newvalue;
-            }
-          }
-          return data
-        })
-      }*/
     
       _recoverThumbnails() {
         getThumbnails().then(data => {
-          //console.log(data)
+            //console.log(data)
             this.setState({
                 thumbnails: this.state.thumbnails.concat(data.thumbnails) // ajouter les vignettes à ceux que l'on a déjà récupérés, deux copies de nos tableaux pour que la concaténation fonctionne
               })
