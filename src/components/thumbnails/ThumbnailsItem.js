@@ -7,14 +7,14 @@ class ThumbnailsItem extends React.Component {
       return (
         <TouchableOpacity onPress={() => {this.notif.localNotif()}}>
           <View style={[styles.button, styles.main_container]}>
-          <Image style={styles.imageButton} source={require('../Images/hygrometry.png')}/>
+          <Image style={styles.imageButton} source={require('../../assets/images/hygrometry.png')}/>
             <View style={styles.content_container}>
               <View style={styles.header_container}>
                 <Text style={styles.title_text}>{thumbnails.name}</Text>
               </View>
               <View style={styles.percentage_container}>
                 <Text className="float-sm-left" style={styles.textButton}>{thumbnails.value}{' '}{thumbnails.unit}</Text>
-                <Image className="float-sm-right" style={styles.arrow} source={require('../Images/ArrowUp.png')}/>
+                <Image className="float-sm-right" style={styles.arrow} source={require('../../assets/images/ArrowUp.png')}/>
               </View>
             </View>
           </View>

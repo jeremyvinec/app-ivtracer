@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, View, Text, Image } from 'react-native'
 import ThumbnailsList from './ThumbnailsList'
-import { getThumbnails } from '../API/Api'
+import { getThumbnails } from '../../../api/Api'
 
 class Thumbnails extends React.Component {
     constructor(props) {
@@ -28,7 +28,7 @@ class Thumbnails extends React.Component {
     render(){
         return(
             <View style={styles.container}>
-                <Image style={styles.logo} source={require('../Images/logo.png')}/>
+                <Image style={styles.logo} source={require('../../assets/images/logo.png')}/>
                 <View style={styles.spacer}/>
                 <View>
                     <Text style={styles.text}>{this.state.thumbnails.length} BOUCLES EN ALARMES ET/OU A ACQUITTER</Text>

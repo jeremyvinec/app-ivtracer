@@ -8,8 +8,8 @@
 
 import React from 'react';
 import { Button, StyleSheet, Text, View, TouchableOpacity, Alert, Image } from 'react-native';
-import NotifService from '../NotifService';
-import appConfig from '../app.json';
+import NotifService from './notif-service';
+import appConfig from './app/app.json';
 
 class Display extends React.Component {
 
@@ -48,7 +48,7 @@ class Display extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Image style={styles.logo} source={require('../Images/logo.png')}/>
+        <Image style={styles.logo} source={require('../assets/images/logo.png')}/>
         <View style={styles.spacer}/>
         <View>
           <Text style={styles.text}>3 BOUCLES EN ALARMES</Text>
@@ -57,35 +57,35 @@ class Display extends React.Component {
         <View style={styles.spacer}/>
         <TouchableOpacity onPress={() => {this.notif.localNotif()}}>
           <View style={[styles.button, styles.main_container]}>
-          <Image style={styles.imageButton} source={require('../Images/hygrometry.png')}/>
+          <Image style={styles.imageButton} source={require('../assets/images/hygrometry.png')}/>
             <View style={styles.content_container}>
               <View style={styles.header_container}>
                 <Text style={styles.title_text}>11 UU97533-12008</Text>
               </View>
               <View style={styles.percentage_container}>
                 <Text style={styles.textButton}>67%</Text>
-                <Image source={require('../Images/ArrowUp.png')}/>
+                <Image source={require('../assets/images/ArrowUp.png')}/>
               </View>
             </View>
           </View>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => {this.notif.localNotif()}}>
           <View style={[styles.button, styles.jaune, styles.main_container]}>
-          <Image style={styles.imageButton} source={require('../Images/temperature.png')}/>
+          <Image style={styles.imageButton} source={require('../assets/images/temperature.png')}/>
             <View style={styles.content_container}>
               <View style={styles.header_container}>
                 <Text style={styles.title_text}>44 DP11000-11019</Text>
               </View>
               <View style={styles.percentage_container}>
                 <Text style={styles.textButton}>31°C</Text>
-                <Image source={require('../Images/ArrowDown.png')}/>
+                <Image source={require('../assets/images/ArrowDown.png')}/>
               </View>
             </View>
           </View>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => {this.notif.localNotif()}}>
           <View style={[styles.button, styles.vert, styles.main_container]}>
-          <Image style={styles.imageButton} source={require('../Images/hygrometry.png')}/>
+          <Image style={styles.imageButton} source={require('../assets/images/hygrometry.png')}/>
             <View style={styles.content_container}>
               <View style={styles.header_container}>
                 <Text style={styles.title_text}>44 DP11000-11019</Text>
