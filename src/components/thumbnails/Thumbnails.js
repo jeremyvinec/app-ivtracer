@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, View, Text, Image } from 'react-native'
 import ThumbnailsList from './ThumbnailsList'
-import { getThumbnails } from '../../../api/Api'
+import { getThumbnails } from '../../utils/api/Api'
 
 class Thumbnails extends React.Component {
     constructor(props) {
@@ -23,7 +23,8 @@ class Thumbnails extends React.Component {
                 thumbnails: this.state.thumbnails.concat(data.thumbnails) // ajouter les vignettes à ceux que l'on a déjà récupérés, deux copies de nos tableaux pour que la concaténation fonctionne
               })
         })
-      } 
+      }
+  
 
     render(){
         return(

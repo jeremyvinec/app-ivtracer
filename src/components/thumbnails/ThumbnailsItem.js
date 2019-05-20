@@ -1,12 +1,55 @@
 import React from 'react'
 import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native'
+import { getThumbnails } from '../../utils/api/Api'
 
 class ThumbnailsItem extends React.Component {
+
+    constructor(props) {
+      super(props)
+      this.state = {
+        thumbnails: [],
+        backgroundColor: 'white'
+      }
+    }
+
+    componentWillMount(){
+      this.backgroundColor()
+    }
+
+    backgroundColor(){
+      getThumbnails().then(data => {
+        if(data.thumbnails[0].states === "prod"){
+          this.setState({
+            backgroundColor: '#8ee06d' // vert
+          })
+        }
+        if(data.thumbnails[0].states === "qaa"){
+          this.setState({
+            backgroundColor: 'green' // vert
+          })
+        }
+        if(data.thumbnails[0].states === "high"){
+          this.setState({
+            backgroundColor: '#fd5d54'
+          })
+        }if(data.thumbnails[0].states === "hs"){
+          this.setState({
+            backgroundColor: '##9a9a9a'
+          })
+        }else{
+          this.setState({
+            backgroundColor: 'white'
+          })
+        }
+      })
+    }
+
     render() {
-        const { thumbnails } = this.props
+        const { thumbnails } = this.props;
+        const { backgroundColor } = this.state;
       return (
         <TouchableOpacity onPress={() => {this.notif.localNotif()}}>
-          <View style={[styles.button, styles.main_container]}>
+          <View style={[{backgroundColor: backgroundColor},styles.button, styles.main_container]}>
           <Image style={styles.imageButton} source={require('../../assets/images/hygrometry.png')}/>
             <View style={styles.content_container}>
               <View style={styles.header_container}>
@@ -51,7 +94,6 @@ class ThumbnailsItem extends React.Component {
       padding: 5,
       width: 200,
       height: 90,
-      backgroundColor: "#FD5D54",
       borderRadius: 5,
       alignItems: 'center',
       justifyContent: 'center',
@@ -60,12 +102,6 @@ class ThumbnailsItem extends React.Component {
         //borderWidth: 5,
         borderColor: "#fff",
       },*/
-    },
-    jaune: {
-      backgroundColor: '#FDB44B' 
-    },
-    vert: {
-      backgroundColor: '#84EF42'
     },
     title_text: {
       color: "#fff",
