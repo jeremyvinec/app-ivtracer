@@ -20,8 +20,6 @@ class ThumbnailsList extends React.Component {
           extraData={this.state}
           keyExtractor={(item) => item.id}
           renderItem={({item}) => ( <ThumbnailsItem thumbnails={item}/> )}
-          onEndReachedThreshold={0.5}
-          //onEndReached={() => {this.props.recoverThumbnails()}}
         />
     )
   }

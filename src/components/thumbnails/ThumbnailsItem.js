@@ -8,52 +8,57 @@ class ThumbnailsItem extends React.Component {
       super(props)
       this.state = {
         thumbnails: [],
-        backgroundColor: 'white'
+        backgroundColor: '#fff',
+        color: '#fff',
+        file: null,
       }
+      this.backgroundColor = this.backgroundColor.bind(this)
     }
 
     componentWillMount(){
-      this.backgroundColor()
+      this.backgroundColor();
+      this.typeIcon();
     }
 
     backgroundColor(){
       getThumbnails().then(data => {
-        if(data.thumbnails[0].states === "prod"){
-          this.setState({
-            backgroundColor: '#8ee06d' // vert
-          })
+        console.log(data.thumbnails[0].states)
+        switch(data.thumbnails[0].states){
+          case 'high': this.setState({ backgroundColor: '#fd5d54' })
+          console.log('qaa');
+          break;
+          case 'prod': this.setState({ backgroundColor: '#8ee06d' })
+          console.log('prod');
+          break;
+          case 'prealarm': this.setState({ backgroundColor: '#fdb44b' });
+          case 'hs' : this.setState({ backgroundColor: '#ddd' });
+          case 'qaa' : this.setState({ color: '#005dbf' });
+          case 'qaa' : this.setState({ color: '#005dbf' });
+          default: this.setState({ backgroundColor: '#8ee06d' })
+          console.log('default')
         }
-        if(data.thumbnails[0].states === "qaa"){
-          this.setState({
-            backgroundColor: 'green' // vert
-          })
-        }
-        if(data.thumbnails[0].states === "high"){
-          this.setState({
-            backgroundColor: '#fd5d54'
-          })
-        }if(data.thumbnails[0].states === "hs"){
-          this.setState({
-            backgroundColor: '##9a9a9a'
-          })
-        }else{
-          this.setState({
-            backgroundColor: 'white'
-          })
+      })
+    }
+
+    typeIcon(){
+      getThumbnails().then(data => {
+        switch(data.thumbnails[0].type){
+          case 'temperature': this.setState({ file : '../../assets/images/temperature.png' });
+          case 'hygrometry': this.setState({ file : '../../assets/images/hygrometry.png' })
         }
       })
     }
 
     render() {
         const { thumbnails } = this.props;
-        const { backgroundColor } = this.state;
+        const { backgroundColor, color, file } = this.state;
       return (
         <TouchableOpacity onPress={() => {this.notif.localNotif()}}>
           <View style={[{backgroundColor: backgroundColor},styles.button, styles.main_container]}>
-          <Image style={styles.imageButton} source={require('../../assets/images/hygrometry.png')}/>
+          <Image style={styles.imageButton} source={file}/>
             <View style={styles.content_container}>
               <View style={styles.header_container}>
-                <Text style={styles.title_text}>{thumbnails.name}</Text>
+                <Text style={[{color: color},styles.title_text]}>{thumbnails.name}</Text>
               </View>
               <View style={styles.percentage_container}>
                 <Text className="float-sm-left" style={styles.textButton}>{thumbnails.value}{' '}{thumbnails.unit}</Text>
@@ -88,8 +93,6 @@ class ThumbnailsItem extends React.Component {
       justifyContent: 'space-between'
     },
     button: {
-      //borderWidth: 5,
-      //borderColor: "#fff",
       margin: 5,
       padding: 5,
       width: 200,
@@ -97,11 +100,6 @@ class ThumbnailsItem extends React.Component {
       borderRadius: 5,
       alignItems: 'center',
       justifyContent: 'center',
-      /*'hover': {
-        border: '1px solid black',
-        //borderWidth: 5,
-        borderColor: "#fff",
-      },*/
     },
     title_text: {
       color: "#fff",

@@ -18,13 +18,12 @@ class Thumbnails extends React.Component {
     
       _recoverThumbnails() {
         getThumbnails().then(data => {
-            //console.log(data)
+            console.log(data)
             this.setState({
                 thumbnails: this.state.thumbnails.concat(data.thumbnails) // ajouter les vignettes à ceux que l'on a déjà récupérés, deux copies de nos tableaux pour que la concaténation fonctionne
               })
         })
       }
-  
 
     render(){
         return(
