@@ -8,54 +8,83 @@ class ThumbnailsItem extends React.Component {
       super(props)
       this.state = {
         thumbnails: [],
-        backgroundColor: '#fff',
+        backgroundColor: 'transparent',
         color: '#fff',
-        file: null,
+        image: '../../assets/images/temperature.png',
       }
       this.backgroundColor = this.backgroundColor.bind(this)
     }
 
     componentWillMount(){
-      this.backgroundColor();
+      //this.backgroundColor();
       this.typeIcon();
     }
 
     backgroundColor(){
       getThumbnails().then(data => {
-        console.log(data.thumbnails[0].states)
-        switch(data.thumbnails[0].states){
-          case 'high': this.setState({ backgroundColor: '#fd5d54' })
-          console.log('qaa');
-          break;
-          case 'prod': this.setState({ backgroundColor: '#8ee06d' })
-          console.log('prod');
-          break;
-          case 'prealarm': this.setState({ backgroundColor: '#fdb44b' });
-          case 'hs' : this.setState({ backgroundColor: '#ddd' });
-          case 'qaa' : this.setState({ color: '#005dbf' });
-          case 'qaa' : this.setState({ color: '#005dbf' });
-          default: this.setState({ backgroundColor: '#8ee06d' })
-          console.log('default')
+        //console.log(data.thumbnails)
+        for(i in data.thumbnails){
+          //console.log(data.thumbnails[i].states)
+          let states = data.thumbnails[i].states
+          let words = states.split(" ")
+          //console.log(words)
+          switch(words){
+            case 'high': {
+              this.setState({ backgroundColor: '#fd5d54' });
+              console.log('high');
+              break;
+            }
+            case 'prod': {
+              this.setState({ backgroundColor: '#8ee06d' });
+              console.log('prod');
+              break;
+            }
+            case 'hs': {
+              this.setState({ backgroundColor: '#ddd' });
+              console.log('hs');
+              break;
+            }
+            case 'prealarme': {
+              this.setState({ backgroundColor: '#fdb44b' });
+              console.log('prealarme');
+              break;
+            }
+            default: { 
+              console.log('nothing');
+              break; 
+            }
+          }
         }
       })
     }
 
     typeIcon(){
       getThumbnails().then(data => {
-        switch(data.thumbnails[0].type){
-          case 'temperature': this.setState({ file : '../../assets/images/temperature.png' });
-          case 'hygrometry': this.setState({ file : '../../assets/images/hygrometry.png' })
+        for(i in data.thumbnails){
+          console.log(data.thumbnails[i].type)
+          switch(data.thumbnails[i].type){
+            case 'temperature': {
+              this.setState({ image : '../../assets/images/temperature.png' });
+              console.log('temperature');
+              break;
+            }
+            case 'hygrometry': {
+              this.setState({ image : '../../assets/images/hygrometry.png' });
+              console.log('hygometry');
+              break;
+            }
+          }
         }
       })
     }
 
     render() {
         const { thumbnails } = this.props;
-        const { backgroundColor, color, file } = this.state;
+        const { backgroundColor, color, image } = this.state;
       return (
         <TouchableOpacity onPress={() => {this.notif.localNotif()}}>
           <View style={[{backgroundColor: backgroundColor},styles.button, styles.main_container]}>
-          <Image style={styles.imageButton} source={file}/>
+          <Image style={styles.imageButton} source={{uri: image}}/>
             <View style={styles.content_container}>
               <View style={styles.header_container}>
                 <Text style={[{color: color},styles.title_text]}>{thumbnails.name}</Text>
