@@ -1,6 +1,7 @@
 import React from 'react'
-import { StyleSheet, View, Text, Image } from 'react-native'
+import { StyleSheet, View, Text, Image, Button } from 'react-native'
 import ThumbnailsList from './ThumbnailsList'
+import Display from '../Display'
 
 // API
 import { getThumbnails } from '../../utils/api/Api'
@@ -21,9 +22,10 @@ import tor from '../../assets/images/types/tor.png'
 class Thumbnails extends React.Component {
     constructor(props) {
         super(props)
+        //this.icons = [],
         this.state = {
           thumbnails: [],
-          icons: temperature,
+          icons: [],
         };
         this._recoverThumbnails = this._recoverThumbnails.bind(this);
       }
@@ -34,16 +36,18 @@ class Thumbnails extends React.Component {
     
       _recoverThumbnails() {
         getThumbnails().then(data => {
-            console.log(data.thumbnails)
+            //console.log(data.thumbnails)
+
+            // infos des vignettes
             this.setState({
                 thumbnails: this.state.thumbnails.concat(data.thumbnails) // ajouter les vignettes à ceux que l'on a déjà récupérés, deux copies de nos tableaux pour que la concaténation fonctionne
               })
             
             // récupérer les icons en fonctions de leurs types
             for(i in data.thumbnails){
-              switch(data.thumbnails[i].type){
+              switch (data.thumbnails[i].type){
                 case 'temperature': {
-                  this.setState({ icons : this.state.icons.concat(data.icons) });
+                  this.setState({ icons : temperature });
                   console.log('temperature');
                   break;
                 }
@@ -99,6 +103,7 @@ class Thumbnails extends React.Component {
                 }
               }
             }
+
         })
       }
 

@@ -8,7 +8,7 @@ class ThumbnailsList extends React.Component {
     super(props)
     this.state = {
       thumbnails: [],
-      icons: null
+      icons: []
     }
   }
 
