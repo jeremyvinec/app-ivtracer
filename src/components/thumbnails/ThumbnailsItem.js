@@ -10,14 +10,13 @@ class ThumbnailsItem extends React.Component {
         thumbnails: [],
         backgroundColor: 'transparent',
         color: '#fff',
-        image: '../../assets/images/temperature.png',
+        icons: null,
       }
       this.backgroundColor = this.backgroundColor.bind(this)
     }
 
     componentWillMount(){
       //this.backgroundColor();
-      this.typeIcon();
     }
 
     backgroundColor(){
@@ -58,33 +57,13 @@ class ThumbnailsItem extends React.Component {
       })
     }
 
-    typeIcon(){
-      getThumbnails().then(data => {
-        for(i in data.thumbnails){
-          console.log(data.thumbnails[i].type)
-          switch(data.thumbnails[i].type){
-            case 'temperature': {
-              this.setState({ image : '../../assets/images/temperature.png' });
-              console.log('temperature');
-              break;
-            }
-            case 'hygrometry': {
-              this.setState({ image : '../../assets/images/hygrometry.png' });
-              console.log('hygometry');
-              break;
-            }
-          }
-        }
-      })
-    }
-
     render() {
-        const { thumbnails } = this.props;
-        const { backgroundColor, color, image } = this.state;
+        const { thumbnails, icons } = this.props;
+        const { backgroundColor, color } = this.state;
       return (
         <TouchableOpacity onPress={() => {this.notif.localNotif()}}>
           <View style={[{backgroundColor: backgroundColor},styles.button, styles.main_container]}>
-          <Image style={styles.imageButton} source={{uri: image}}/>
+          <Image style={styles.imageButton} source={icons}/>
             <View style={styles.content_container}>
               <View style={styles.header_container}>
                 <Text style={[{color: color},styles.title_text]}>{thumbnails.name}</Text>

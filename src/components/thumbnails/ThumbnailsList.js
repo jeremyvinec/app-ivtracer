@@ -8,6 +8,7 @@ class ThumbnailsList extends React.Component {
     super(props)
     this.state = {
       thumbnails: [],
+      icons: null
     }
   }
 
@@ -19,7 +20,12 @@ class ThumbnailsList extends React.Component {
           data={this.props.thumbnails}
           extraData={this.state}
           keyExtractor={(item) => item.id}
-          renderItem={({item}) => ( <ThumbnailsItem thumbnails={item}/> )}
+          renderItem={({item}) => ( 
+            <ThumbnailsItem 
+              thumbnails={item} 
+              icons={item}
+            /> 
+          )}
         />
     )
   }
