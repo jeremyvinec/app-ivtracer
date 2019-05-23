@@ -9,7 +9,7 @@ import { getThumbnails } from '../../utils/api/Api'
 // ICONS
 import temperature from '../../assets/images/types/temperature.png'
 import hygrometry from '../../assets/images/types/hygrometry.png'
-import concentration from '../../assets/images/types/concentration.png'
+/*import concentration from '../../assets/images/types/concentration.png'
 import conductivity from '../../assets/images/types/conductivity.png'
 import flow from '../../assets/images/types/flow.png'
 import generic from '../../assets/images/types/generic.png'
@@ -17,15 +17,15 @@ import particle from '../../assets/images/types/particle.png'
 import pressure from '../../assets/images/types/pressure.png'
 import speed from '../../assets/images/types/speed.png'
 import toc from '../../assets/images/types/toc.png'
-import tor from '../../assets/images/types/tor.png'
+import tor from '../../assets/images/types/tor.png'*/
 
 class Thumbnails extends React.Component {
     constructor(props) {
         super(props)
-        //this.icons = [],
+        this.icons = ''
         this.state = {
           thumbnails: [],
-          icons: [],
+          //icons: [],
         };
         this._recoverThumbnails = this._recoverThumbnails.bind(this);
       }
@@ -47,12 +47,13 @@ class Thumbnails extends React.Component {
             for(i in data.thumbnails){
               switch (data.thumbnails[i].type){
                 case 'temperature': {
-                  this.setState({ icons : temperature });
+                  this.icons = temperature
+                  //this.setState({ icons : temperature });
                   console.log('temperature');
                   break;
                 }
                 case 'hygrometry': {
-                  this.setState({ icons : hygrometry });
+                  this.icons = hygrometry
                   console.log('hygometry');
                   break;
                 }
@@ -100,6 +101,39 @@ class Thumbnails extends React.Component {
                   this.setState({ icons : tor });
                   console.log('tor');
                   break;
+                }
+              }
+            }
+            
+            // récupérer le backgroundColor
+            for(i in data.thumbnails){
+              let states = data.thumbnails[i].states;
+              let words = states.split(' ')
+              console.log([...words])
+              switch([...words]){
+                case 'high': {
+                  this.setState({ backgroundColor: '#fd5d54' });
+                  console.log('high');
+                  break;
+                }
+                case 'prod': {
+                  this.setState({ backgroundColor: '#8ee06d' });
+                  console.log('prod');
+                  break;
+                }
+                case 'hs': {
+                  this.setState({ backgroundColor: '#ddd' });
+                  console.log('hs');
+                  break;
+                }
+                case 'prealarme': {
+                  this.setState({ backgroundColor: '#fdb44b' });
+                  console.log('prealarme');
+                  break;
+                }
+                default: { 
+                  console.log('nothing');
+                  break; 
                 }
               }
             }
