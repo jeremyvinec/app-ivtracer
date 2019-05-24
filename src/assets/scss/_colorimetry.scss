@@ -1,0 +1,154 @@
+// Colorimetry pour les thumbnail et l'entête du panneau détail
+
+.thumbnail-container {
+  &.alarm, &.prealarm {
+    .high, .low {
+      color: $white;
+    }
+  }
+
+  &.hs {
+    color: lighten($grey, 10%);
+
+     .type-icon div:not(.tor) svg g, .type-icon div:not(.tor) svg g g, .type-icon div.tor svg g g g g {
+      fill: lighten($grey, 10%);
+    }
+
+    .type-icon div.tor svg circle {
+      stroke: lighten($grey, 10%);
+    }
+  }
+
+  &.offline {
+    color: $lighten-grey;
+
+     .type-icon div:not(.tor) svg g, .type-icon div:not(.tor) svg g g, .type-icon div.tor svg g g g g {
+      fill: $lighten-grey;
+    }
+
+    .type-icon div.tor svg circle {
+      stroke: $lighten-grey;
+    }
+  }
+
+  &.alarm:not(.ack) {
+    background-color: $lime-red;
+  }
+
+  &.alarm.notack {
+    @include bg-blink($lime-red, 'alarm');
+  }
+
+
+  &.prealarm:not(.ack) {
+    background-color: $lime-orange;
+  }
+
+  &.prealarm.notack {
+    @include bg-blink($lime-orange, 'prealarm');
+  }
+
+  &.hs {
+    background-color: $lighten-grey;
+  }
+
+  &.offline {
+    background-color: $white;
+  }
+
+  &:not(.prealarm):not(.alarm):not(.hs):not(.offline).notack {
+    background-color: $lime-green;
+  }
+
+  &.notack {
+    @include bg-blink($lime-green, 'notack');
+    font-weight: bold;
+  }
+
+  &.qaa, &.qai {
+    .thumbnail-name {
+      color: $lime-blue;
+    }
+  }
+
+  &.qai {
+    font-style: italic;
+  }
+
+  .state-icon div.room-out-of-prod {
+    background: linear-gradient( -45deg, $lime-orange, $lime-orange 50%, $pale-green 50% );
+    height: 3vw;
+    width: 3vw;
+  }
+}
+
+.details-panel-header {
+  &.alarm {
+    background-color: $pale-red;
+
+    > .row {
+      border-bottom-color: $pale-red;
+    }
+
+    .state-icon svg g g {
+      fill: $flash-red;
+    }
+  }
+
+  &.prealarm {
+    background-color: $pale-orange;
+
+    > .row {
+      border-bottom-color: $pale-orange;
+    }
+
+    .state-icon svg g g {
+      fill: $flash-orange;
+    }
+  }
+
+  &:not(.alarm):not(.prealarm):not(.offline).notack,
+  &:not(.alarm):not(.prealarm):not(.offline).roomoutofprod {
+    background-color: $pale-green;
+
+    > .row {
+      border-bottom-color: $pale-green;
+    }
+  }
+
+  &.notack {
+    animation: none;
+
+    .first-line .thumbnail-name, .first-line .thumbnail-value, .second-line .thumbnail-label-state {
+      font-weight: bold;
+    }
+  }
+
+  &.offline {
+    color: lighten($grey, 10%);
+  }
+
+  &.qaa, &.qai {
+    .thumbnail-name {
+      color: $lime-blue;
+    }
+  }
+
+  .temperature svg g g {
+    fill: #ffc107;
+  }
+
+  &.qai .thumbnail-name {
+    font-style: italic;
+  }
+}
+
+.table-alarms .state-icon-element {
+  &.alarm .state-icon svg g g {
+    fill: $flash-red;
+  }
+
+  &.prealarm .state-icon svg g g {
+    fill: $flash-orange;
+  }
+}

@@ -17,16 +17,20 @@ import tor from '../../assets/images/types/tor.png'
 class ThumbnailsItem extends React.Component {
     constructor(props){
       super(props)
-      this.icons = []
+      this.icons = [],
+      this.backgroundColor = 'transparent',
+      this.color = '#fff'
     }
 
     componentWillMount(){
-      this.getImageFromType()
+      this._getImageFromType()
+      this._backgroundColor()
+      this._color()
     }
 
-    getImageFromType(){
+    _getImageFromType(){
       const type = this.props.thumbnails.type
-      console.log(type)
+      //console.log(type)
       if(type === 'temperature'){
         this.icons = temperature
       } else if(type === 'hygrometry'){
@@ -52,15 +56,41 @@ class ThumbnailsItem extends React.Component {
       }
     }
 
+    _backgroundColor(){
+      const states = this.props.thumbnails.states
+      const bg = states.split(' ')
+      console.log(bg)
+      //console.log(states)
+      if(states === 'hs'){
+        this.backgroundColor = '#808080'
+      } else if(states === 'high'){
+        this.backgroundColor = '#fd5d54'
+      } else if(states === 'low'){
+        this.backgroundColor = ''
+      }
+    }
+
+    _color(){
+      const states = this.props.thumbnails.states
+      //console.log(states)
+      if(states === 'qaa'){
+        this.color = '#005dbf'
+      } else if(states === 'qai'){
+        this.color = '#005dbf'
+      } else if(states === 'concentration'){
+        this.color = concentration
+      }
+    }
+
     render() {
         const { thumbnails } = this.props;
       return (
         <TouchableOpacity onPress={() => {this.notif.localNotif()}}>
-          <View style={[/*{backgroundColor: backgroundColor}*/,styles.button, styles.main_container]}>
+          <View style={[{backgroundColor: this.backgroundColor},styles.button, styles.main_container]}>
           <Image className={thumbnails.type} style={styles.imageButton} source={this.icons}/>
             <View style={styles.content_container}>
               <View style={styles.header_container}>
-                <Text style={[/*{color: color}*/,styles.title_text]}>{thumbnails.name}</Text>
+                <Text style={[{color: this.color},styles.title_text]}>{thumbnails.name}</Text>
               </View>
               <View style={styles.percentage_container}>
                 <Text className="float-sm-left" style={styles.textButton}>{thumbnails.value}{' '}{thumbnails.unit}</Text>

@@ -1,0 +1,54 @@
+// Animations
+@keyframes winking {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .4;
+  }
+}
+
+.blink, .blink .state-icon {
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  animation-name: winking;
+}
+
+@mixin bg-blink($color, $type) {
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-duration: 1.5s;
+  -moz-animation-duration: 1.5s;
+  animation-duration: 1.5s;
+  -webkit-animation-name: #{$type + 'blink'};
+  -moz-animation-name: #{$type + 'blink'};
+  animation-name: #{$type + 'blink'};
+
+  @-webkit-keyframes #{$type + 'blink'} {
+    0%, 100% {
+      background-color: $color;
+    }
+    50% {
+      background-color: rgba($color, .4);
+    }
+  }
+
+  @-moz-keyframes #{$type + 'blink'} {
+    0%, 100% {
+      background-color: $color;
+    }
+    50% {
+      background-color: rgba($color, .4);
+    }
+  }
+
+  @keyframes #{$type + 'blink'} {
+    0%, 100% {
+      background-color: $color;
+    }
+    50% {
+      background-color: rgba($color, .4);
+    }
+  }
+}
