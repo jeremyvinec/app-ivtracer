@@ -6,10 +6,8 @@ class ThumbnailsList extends React.Component {
 
   constructor(props) {
     super(props)
-    this.icons = ''
     this.state = {
       thumbnails: [],
-      //icons: [],
     }
   }
 
@@ -24,7 +22,7 @@ class ThumbnailsList extends React.Component {
           renderItem={({item}) => ( 
             <ThumbnailsItem 
               thumbnails={item} 
-              icons
+              //icons
             /> 
           )}
         />

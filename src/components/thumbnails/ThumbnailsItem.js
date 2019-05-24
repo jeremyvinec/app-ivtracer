@@ -1,14 +1,63 @@
 import React from 'react'
 import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native'
 
+// ICONS
+import temperature from '../../assets/images/types/temperature.png'
+import hygrometry from '../../assets/images/types/hygrometry.png'
+import concentration from '../../assets/images/types/concentration.png'
+import conductivity from '../../assets/images/types/conductivity.png'
+import flow from '../../assets/images/types/flow.png'
+import generic from '../../assets/images/types/generic.png'
+import particle from '../../assets/images/types/particle.png'
+import pressure from '../../assets/images/types/pressure.png'
+import speed from '../../assets/images/types/speed.png'
+import toc from '../../assets/images/types/toc.png'
+import tor from '../../assets/images/types/tor.png'
+
 class ThumbnailsItem extends React.Component {
+    constructor(props){
+      super(props)
+      this.icons = []
+    }
+
+    componentWillMount(){
+      this.getImageFromType()
+    }
+
+    getImageFromType(){
+      const type = this.props.thumbnails.type
+      console.log(type)
+      if(type === 'temperature'){
+        this.icons = temperature
+      } else if(type === 'hygrometry'){
+        this.icons = hygrometry
+      } else if(type === 'concentration'){
+        this.icons = concentration
+      } else if(type === 'conductivity'){
+        this.icons = conductivity
+      } else if(type === 'flow'){
+        this.icons = flow
+      } else if(type === 'generic'){
+        this.icons = generic
+      } else if(type === 'particle'){
+        this.icons = particle
+      } else if(type === 'pressure'){
+        this.icons = pressure
+      } else if(type === 'speed'){
+        this.icons = speed
+      } else if(type === 'toc'){
+        this.icons = toc
+      } else if(type === 'tor'){
+        this.icons = tor
+      }
+    }
 
     render() {
-        const { thumbnails, icons, backgroundColor, color } = this.props;
+        const { thumbnails } = this.props;
       return (
         <TouchableOpacity onPress={() => {this.notif.localNotif()}}>
           <View style={[/*{backgroundColor: backgroundColor}*/,styles.button, styles.main_container]}>
-          <Image style={styles.imageButton} source={icons}/>
+          <Image className={thumbnails.type} style={styles.imageButton} source={this.icons}/>
             <View style={styles.content_container}>
               <View style={styles.header_container}>
                 <Text style={[/*{color: color}*/,styles.title_text]}>{thumbnails.name}</Text>

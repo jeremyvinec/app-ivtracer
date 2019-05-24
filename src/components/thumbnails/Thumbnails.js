@@ -6,26 +6,11 @@ import Display from '../Display'
 // API
 import { getThumbnails } from '../../utils/api/Api'
 
-// ICONS
-import temperature from '../../assets/images/types/temperature.png'
-import hygrometry from '../../assets/images/types/hygrometry.png'
-/*import concentration from '../../assets/images/types/concentration.png'
-import conductivity from '../../assets/images/types/conductivity.png'
-import flow from '../../assets/images/types/flow.png'
-import generic from '../../assets/images/types/generic.png'
-import particle from '../../assets/images/types/particle.png'
-import pressure from '../../assets/images/types/pressure.png'
-import speed from '../../assets/images/types/speed.png'
-import toc from '../../assets/images/types/toc.png'
-import tor from '../../assets/images/types/tor.png'*/
-
 class Thumbnails extends React.Component {
     constructor(props) {
         super(props)
-        this.icons = ''
         this.state = {
           thumbnails: [],
-          //icons: [],
         };
         this._recoverThumbnails = this._recoverThumbnails.bind(this);
       }
@@ -44,7 +29,7 @@ class Thumbnails extends React.Component {
               })
             
             // récupérer les icons en fonctions de leurs types
-            for(i in data.thumbnails){
+            /*for(i in data.thumbnails){
               switch (data.thumbnails[i].type){
                 case 'temperature': {
                   this.icons = temperature
@@ -136,7 +121,7 @@ class Thumbnails extends React.Component {
                   break; 
                 }
               }
-            }
+            }*/
 
         })
       }
@@ -153,7 +138,7 @@ class Thumbnails extends React.Component {
                 <View style={styles.thumbnails_list}>
                   <ThumbnailsList
                       thumbnails={this.state.thumbnails}
-                      icons={this.state.icons}
+                      //icons={this.state.icons}
                       recoverThumbnails={this._recoverThumbnails}
                     />
                 </View>
