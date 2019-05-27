@@ -25,9 +25,8 @@ class ThumbnailsItem extends React.Component {
       this.fontWeight = 'normal'
       const states = this.props.thumbnails.states
       this.value = states.split(' ')
-      this._arrow = this._arrow.bind(this)
       this.state = {
-        opacity: new Animated.Value(0.7)
+        opacity: new Animated.Value(1),
       }
     }
 
@@ -37,6 +36,7 @@ class ThumbnailsItem extends React.Component {
       this._color()
       this._arrow()
       this._animate()
+      this._handleMouseHover()
     }
 
     _getImageFromType(){
@@ -72,10 +72,10 @@ class ThumbnailsItem extends React.Component {
       //console.log(states)
       if(value.includes('hs')){
         this.backgroundColor = '#ddd' // lighten-grey
-      } else if(value.includes('alarme')){
-        this.backgroundColor = '#ffe4dd' // $pale-red
-      } else if(value.includes('prealarme')){
-        this.backgroundColor = '#ffe5b4' // $pale-orange
+      } else if(value.includes('alarm')){
+        this.backgroundColor = '#fd5d54' // $pale-red
+      } else if(value.includes('prealarm')){
+        this.backgroundColor = '#fdb44b' // $pale-orange
       } else if(value.includes('prod')){
         this.backgroundColor = '#e8ffcd' // $pale-green
       }
@@ -93,7 +93,7 @@ class ThumbnailsItem extends React.Component {
       } else if(value.includes('hs')){
         this.color = '#9a9a9a' // $grey
       } else if(value.includes('notack')){
-        this.fontWeight = 'bold'
+        this.fontWeight = '700'
       }
     }
 
@@ -112,20 +112,23 @@ class ThumbnailsItem extends React.Component {
 
     _animate(){
       value = this.value
-      Animated.sequence([
-        Animated.timing(this.state.opacity, {
-            delay: 1500,
-            duration: 1000,
-            toValue: 0.7,
-            animationIterationCount : 'infinite'
-        }),
-        Animated.timing(this.state.opacity, {
-            delay: 500,
-            duration: 500,
-            toValue: 1.0,
-            animationIterationCount : 'infinite'
-        })
-      ]).start();
+      if(value.includes('notack')){
+        Animated.loop(
+          Animated.sequence([
+            Animated.timing(this.state.opacity, {
+                duration: 100,
+                toValue: 0.7,
+            }),
+            Animated.timing(this.state.opacity, {
+                duration: 100,
+                toValue: 1.0,
+            })
+          ]),
+          {
+            iteration: 4
+          }
+        ).start();
+      }
     }
 
     render() {
@@ -139,11 +142,12 @@ class ThumbnailsItem extends React.Component {
                 <Text style={[{color: this.color, fontStyle: this.fontStyle, fontWeight: this.fontWeight},styles.title_text]}>{thumbnails.name}</Text>
               </View>
               <View style={styles.percentage_container}>
-                <Text className="float-sm-left" style={[{color: this.color}, styles.textButton]}>{thumbnails.value}{' '}{thumbnails.unit}</Text>
+                <Text className="float-sm-left" style={styles.textButton}>{thumbnails.value}{' '}{thumbnails.unit}</Text>
                 {this._arrow()}
               </View>
             </View>
           </Animated.View>
+          {this.state.isHovering  && <Text>ok</Text>}
         </TouchableOpacity>
       )
     }
@@ -181,7 +185,7 @@ class ThumbnailsItem extends React.Component {
     },
     title_text: {
       fontSize: 14,
-      marginTop: 5
+      marginTop: 5,
     },
     textButton:{
       fontSize: 17,
