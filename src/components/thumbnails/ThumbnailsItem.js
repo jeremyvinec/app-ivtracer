@@ -18,7 +18,7 @@ class ThumbnailsItem extends React.Component {
     constructor(props){
       super(props)
       this.icons = [],
-      this.backgroundColor = 'transparent',
+      this.backgroundColor = '#8ee06d',
       this.color = '#fff'
     }
 
@@ -26,6 +26,7 @@ class ThumbnailsItem extends React.Component {
       this._getImageFromType()
       this._backgroundColor()
       this._color()
+      this._arrow()
     }
 
     _getImageFromType(){
@@ -59,26 +60,43 @@ class ThumbnailsItem extends React.Component {
     _backgroundColor(){
       const states = this.props.thumbnails.states
       const bg = states.split(' ')
-      console.log(bg)
       //console.log(states)
-      if(states === 'hs'){
+      //console.log(bg.includes('hs'))
+      if(bg.includes('hs')){
         this.backgroundColor = '#808080'
-      } else if(states === 'high'){
+      } else if(bg.includes('high')){
         this.backgroundColor = '#fd5d54'
-      } else if(states === 'low'){
-        this.backgroundColor = ''
+      } else if(bg.includes('low')){
+        this.backgroundColor = '#fd5d54'
+      } else if(bg.includes('alarme')){
+        this.backgroundColor = '#ffe4dd' // $pale-red
+      } else if(bg.includes('prealarme')){
+        this.backgroundColor = '#ffe5b4' // $pale-orange
+      } else if(bg.includes('prod')){
+        this.backgroundColor = '#e8ffcd' // $pale-green
       }
     }
 
     _color(){
       const states = this.props.thumbnails.states
-      //console.log(states)
-      if(states === 'qaa'){
+      const color = states.split(' ')
+      //console.log(color)
+      if(color.includes('qaa')){
+        this.color = '#005dbf' //$lime-blue
+      } else if(color.includes('qai')){
+        this.color = '#005dbf' //$lime-blue
+      } else if(color.includes('qai')){
         this.color = '#005dbf'
-      } else if(states === 'qai'){
-        this.color = '#005dbf'
-      } else if(states === 'concentration'){
-        this.color = concentration
+      }
+    }
+
+    _arrow(){
+      const values = this.props.thumbnails.value
+      
+      if(values){
+        require('../../assets/images/ArrowUp.png')
+      } else{
+        require('../../assets/images/ArrowDown.png')
       }
     }
 
@@ -134,7 +152,6 @@ class ThumbnailsItem extends React.Component {
       justifyContent: 'center',
     },
     title_text: {
-      color: "#fff",
       fontSize: 14,
       fontWeight: 'bold',
       marginTop: 5
