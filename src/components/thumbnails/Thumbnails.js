@@ -1,7 +1,11 @@
 import React from 'react'
-import { StyleSheet, View, Text, Image, Button } from 'react-native'
+import { StyleSheet, View, Text, Image, Button, TouchableOpacity, Alert } from 'react-native'
 import ThumbnailsList from './ThumbnailsList'
 import Display from '../Display'
+
+// Notification
+import NotifService from '../notif-service';
+import appConfig from '../app/app.json';
 
 // API
 import { getThumbnails } from '../../utils/api/Api'
@@ -10,9 +14,11 @@ class Thumbnails extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+          senderId: appConfig.senderID,
           thumbnails: [],
         };
         this._recoverThumbnails = this._recoverThumbnails.bind(this);
+        this.notif = new NotifService(this.onRegister.bind(this), this.onNotif.bind(this));
       }
     
       componentWillMount(){
@@ -27,101 +33,6 @@ class Thumbnails extends React.Component {
             this.setState({
                 thumbnails: this.state.thumbnails.concat(data.thumbnails) // ajouter les vignettes à ceux que l'on a déjà récupérés, deux copies de nos tableaux pour que la concaténation fonctionne
               })
-            
-            // récupérer les icons en fonctions de leurs types
-            /*for(i in data.thumbnails){
-              switch (data.thumbnails[i].type){
-                case 'temperature': {
-                  this.icons = temperature
-                  //this.setState({ icons : temperature });
-                  console.log('temperature');
-                  break;
-                }
-                case 'hygrometry': {
-                  this.icons = hygrometry
-                  console.log('hygometry');
-                  break;
-                }
-                case 'concentration': {
-                  this.setState({ icons : concentration });
-                  console.log('concentration');
-                  break;
-                }
-                case 'conductivity': {
-                  this.setState({ icons : conductivity });
-                  console.log('conductivity');
-                  break;
-                }
-                case 'flow': {
-                  this.setState({ icons : flow });
-                  console.log('flow');
-                  break;
-                }
-                case 'generic': {
-                  this.setState({ icons : generic });
-                  console.log('generic');
-                  break;
-                }
-                case 'particle': {
-                  this.setState({ icons : particle });
-                  console.log('particle');
-                  break;
-                }
-                case 'pressure': {
-                  this.setState({ icons : pressure });
-                  console.log('pressure');
-                  break;
-                }
-                case 'speed': {
-                  this.setState({ icons : speed });
-                  console.log('speed');
-                  break;
-                }
-                case 'toc': {
-                  this.setState({ icons : toc });
-                  console.log('toc');
-                  break;
-                }
-                case 'tor': {
-                  this.setState({ icons : tor });
-                  console.log('tor');
-                  break;
-                }
-              }
-            }
-            
-            // récupérer le backgroundColor
-            for(i in data.thumbnails){
-              let states = data.thumbnails[i].states;
-              let words = states.split(' ')
-              console.log([...words])
-              switch([...words]){
-                case 'high': {
-                  this.setState({ backgroundColor: '#fd5d54' });
-                  console.log('high');
-                  break;
-                }
-                case 'prod': {
-                  this.setState({ backgroundColor: '#8ee06d' });
-                  console.log('prod');
-                  break;
-                }
-                case 'hs': {
-                  this.setState({ backgroundColor: '#ddd' });
-                  console.log('hs');
-                  break;
-                }
-                case 'prealarme': {
-                  this.setState({ backgroundColor: '#fdb44b' });
-                  console.log('prealarme');
-                  break;
-                }
-                default: { 
-                  console.log('nothing');
-                  break; 
-                }
-              }
-            }*/
 
         })
       }
@@ -138,12 +49,27 @@ class Thumbnails extends React.Component {
                 <View style={styles.thumbnails_list}>
                   <ThumbnailsList
                       thumbnails={this.state.thumbnails}
-                      //icons={this.state.icons}
                       recoverThumbnails={this._recoverThumbnails}
                     />
                 </View>
+                <Button title='notif' onPress={() => this.notif.localNotif()}/>
           </View>
         )
+    }
+
+    onRegister(token) {
+      Alert.alert("Registered !", JSON.stringify(token));
+      console.log(token);
+      this.setState({ registerToken: token.token, gcmRegistered: true });
+    }
+  
+    onNotif(notif) {
+      console.log(notif);
+      Alert.alert(notif.title, notif.message);
+    }
+  
+    handlePerm(perms) {
+      Alert.alert("Permissions", JSON.stringify(perms));
     }
 }
 

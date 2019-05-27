@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native'
+import { StyleSheet, View, Text, TouchableOpacity, Image, Animated } from 'react-native'
 
 // ICONS
 import temperature from '../../assets/images/types/temperature.png'
@@ -14,12 +14,21 @@ import speed from '../../assets/images/types/speed.png'
 import toc from '../../assets/images/types/toc.png'
 import tor from '../../assets/images/types/tor.png'
 
+
 class ThumbnailsItem extends React.Component {
     constructor(props){
       super(props)
       this.icons = [],
       this.backgroundColor = '#8ee06d',
-      this.color = '#fff'
+      this.color = '#fff',
+      this.fontStyle = 'normal',
+      this.fontWeight = 'normal'
+      const states = this.props.thumbnails.states
+      this.value = states.split(' ')
+      this._arrow = this._arrow.bind(this)
+      this.state = {
+        opacity: new Animated.Value(0.7)
+      }
     }
 
     componentWillMount(){
@@ -27,6 +36,7 @@ class ThumbnailsItem extends React.Component {
       this._backgroundColor()
       this._color()
       this._arrow()
+      this._animate()
     }
 
     _getImageFromType(){
@@ -58,64 +68,82 @@ class ThumbnailsItem extends React.Component {
     }
 
     _backgroundColor(){
-      const states = this.props.thumbnails.states
-      const bg = states.split(' ')
+      value = this.value
       //console.log(states)
-      //console.log(bg.includes('hs'))
-      if(bg.includes('hs')){
-        this.backgroundColor = '#808080'
-      } else if(bg.includes('high')){
-        this.backgroundColor = '#fd5d54'
-      } else if(bg.includes('low')){
-        this.backgroundColor = '#fd5d54'
-      } else if(bg.includes('alarme')){
+      if(value.includes('hs')){
+        this.backgroundColor = '#ddd' // lighten-grey
+      } else if(value.includes('alarme')){
         this.backgroundColor = '#ffe4dd' // $pale-red
-      } else if(bg.includes('prealarme')){
+      } else if(value.includes('prealarme')){
         this.backgroundColor = '#ffe5b4' // $pale-orange
-      } else if(bg.includes('prod')){
+      } else if(value.includes('prod')){
         this.backgroundColor = '#e8ffcd' // $pale-green
       }
     }
 
     _color(){
-      const states = this.props.thumbnails.states
-      const color = states.split(' ')
-      //console.log(color)
-      if(color.includes('qaa')){
+      value = this.value
+      if(value.includes('qaa')){
         this.color = '#005dbf' //$lime-blue
-      } else if(color.includes('qai')){
+      } else if(value.includes('qai')){
         this.color = '#005dbf' //$lime-blue
-      } else if(color.includes('qai')){
-        this.color = '#005dbf'
+      } else if(value.includes('qai')){
+        this.color = '#005dbf', //$lime-blue
+        this.fontStyle = 'italic'
+      } else if(value.includes('hs')){
+        this.color = '#9a9a9a' // $grey
+      } else if(value.includes('notack')){
+        this.fontWeight = 'bold'
       }
     }
 
     _arrow(){
-      const values = this.props.thumbnails.value
-      
-      if(values){
-        require('../../assets/images/ArrowUp.png')
-      } else{
-        require('../../assets/images/ArrowDown.png')
+      value = this.value       
+      if(value.includes('high')){
+        return(
+          <Image className="float-sm-right" style={styles.arrow} source={require('../../assets/images/ArrowUp.png')}/>
+        )
+      } else if(value.includes('low')){
+        return(
+          <Image className="float-sm-right" style={styles.arrow} source={require('../../assets/images/ArrowDown.png')}/>
+        )
       }
+    }
+
+    _animate(){
+      value = this.value
+      Animated.sequence([
+        Animated.timing(this.state.opacity, {
+            delay: 1500,
+            duration: 1000,
+            toValue: 0.7,
+            animationIterationCount : 'infinite'
+        }),
+        Animated.timing(this.state.opacity, {
+            delay: 500,
+            duration: 500,
+            toValue: 1.0,
+            animationIterationCount : 'infinite'
+        })
+      ]).start();
     }
 
     render() {
         const { thumbnails } = this.props;
       return (
-        <TouchableOpacity onPress={() => {this.notif.localNotif()}}>
-          <View style={[{backgroundColor: this.backgroundColor},styles.button, styles.main_container]}>
+        <TouchableOpacity>
+          <Animated.View style={[{backgroundColor: this.backgroundColor, opacity: this.state.opacity},styles.button, styles.main_container]}>
           <Image className={thumbnails.type} style={styles.imageButton} source={this.icons}/>
             <View style={styles.content_container}>
               <View style={styles.header_container}>
-                <Text style={[{color: this.color},styles.title_text]}>{thumbnails.name}</Text>
+                <Text style={[{color: this.color, fontStyle: this.fontStyle, fontWeight: this.fontWeight},styles.title_text]}>{thumbnails.name}</Text>
               </View>
               <View style={styles.percentage_container}>
-                <Text className="float-sm-left" style={styles.textButton}>{thumbnails.value}{' '}{thumbnails.unit}</Text>
-                <Image className="float-sm-right" style={styles.arrow} source={require('../../assets/images/ArrowUp.png')}/>
+                <Text className="float-sm-left" style={[{color: this.color}, styles.textButton]}>{thumbnails.value}{' '}{thumbnails.unit}</Text>
+                {this._arrow()}
               </View>
             </View>
-          </View>
+          </Animated.View>
         </TouchableOpacity>
       )
     }
@@ -153,13 +181,11 @@ class ThumbnailsItem extends React.Component {
     },
     title_text: {
       fontSize: 14,
-      fontWeight: 'bold',
       marginTop: 5
     },
     textButton:{
-      color: "#fff",
       fontSize: 17,
-      fontWeight: 'bold',
+      fontWeight: '700',
     },
     imageButton: {
       height: 40,
@@ -168,21 +194,6 @@ class ThumbnailsItem extends React.Component {
     },
     spacer: {
       height: 10,
-    },
-    title: {
-      fontWeight: "bold",
-      fontSize: 20,
-      textAlign: "center",
-    },
-    logo: {
-      marginTop: 50,
-      height: 76,
-      width: 253,
-    },
-    text: {
-      color: "#fff",
-      fontWeight: "bold",
-      textAlign: 'center'
     },
     arrow: {
       height: 20,
