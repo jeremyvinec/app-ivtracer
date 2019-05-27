@@ -22,12 +22,12 @@ class ThumbnailsItem extends React.Component {
       this.backgroundColor = '#8ee06d',
       this.color = '#fff',
       this.fontStyle = 'normal',
-      this.fontWeight = 'normal'
-      const states = this.props.thumbnails.states
-      this.value = states.split(' ')
+      this.fontWeight = '700',
       this.state = {
         opacity: new Animated.Value(1),
       }
+      const states = this.props.thumbnails.states
+      this.value = states.split(' ')
     }
 
     componentWillMount(){
@@ -36,7 +36,6 @@ class ThumbnailsItem extends React.Component {
       this._color()
       this._arrow()
       this._animate()
-      this._handleMouseHover()
     }
 
     _getImageFromType(){
@@ -93,7 +92,7 @@ class ThumbnailsItem extends React.Component {
       } else if(value.includes('hs')){
         this.color = '#9a9a9a' // $grey
       } else if(value.includes('notack')){
-        this.fontWeight = '700'
+        this.fontWeight = 'normal'
       }
     }
 
