@@ -1,7 +1,6 @@
 import React from 'react'
-import { StyleSheet, View, Text, Image, Button, TouchableOpacity, Alert } from 'react-native'
+import { StyleSheet, View, Text, Image, Button, Alert } from 'react-native'
 import ThumbnailsList from './ThumbnailsList'
-import Display from '../Display'
 
 // Notification
 import NotifService from '../notif-service';
@@ -74,70 +73,13 @@ class Thumbnails extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    list: {
-        flex: 1
-    },
     container: {
       flex: 1,
       alignItems: 'center',
       backgroundColor: '#4C626F',
     },
-    main_container: {
-      height: 90,
-      flexDirection: 'row',
-    },
-    content_container: {
-      flex: 1,
-    },
-    header_container: {
-      flexDirection: 'row'
-    },
-    percentage_container: {
-      flexDirection: 'row',
-      marginTop: 1
-    },
-    button: {
-      borderWidth: 5,
-      borderColor: "#fff",
-      margin: 5,
-      padding: 5,
-      width: 200,
-      height: 90,
-      backgroundColor: "#FD5D54",
-      borderRadius: 5,
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    jaune: {
-      backgroundColor: '#FDB44B' 
-    },
-    vert: {
-      backgroundColor: '#84EF42'
-    },
-    title_text: {
-      color: "#fff",
-      fontSize: 14,
-      fontWeight: 'bold',
-      marginTop: 5
-    },
-    textButton:{
-      color: "#fff",
-      fontSize: 17,
-      fontWeight: 'bold',
-      paddingRight: 65
-    },
-    imageButton: {
-      height: 40,
-      width: 40,
-      margin: 2,
-    },
     spacer: {
       height: 10,
-    },
-    title: {
-      fontWeight: "bold",
-      fontSize: 20,
-      textAlign: "center",
     },
     logo: {
       marginTop: 50,

@@ -22,7 +22,7 @@ class ThumbnailsItem extends React.Component {
       this.backgroundColor = '#8ee06d',
       this.color = '#fff',
       this.fontStyle = 'normal',
-      this.fontWeight = '700',
+      this.fontWeight = 'normal',
       this.state = {
         opacity: new Animated.Value(1),
       }
@@ -92,7 +92,7 @@ class ThumbnailsItem extends React.Component {
       } else if(value.includes('hs')){
         this.color = '#9a9a9a' // $grey
       } else if(value.includes('notack')){
-        this.fontWeight = 'normal'
+        this.fontWeight = '700'
       }
     }
 
@@ -115,11 +115,11 @@ class ThumbnailsItem extends React.Component {
         Animated.loop(
           Animated.sequence([
             Animated.timing(this.state.opacity, {
-                duration: 100,
-                toValue: 0.7,
+                duration: 1500,
+                toValue: 0.4,
             }),
             Animated.timing(this.state.opacity, {
-                duration: 100,
+                duration: 1500,
                 toValue: 1.0,
             })
           ]),
@@ -140,24 +140,18 @@ class ThumbnailsItem extends React.Component {
               <View style={styles.header_container}>
                 <Text style={[{color: this.color, fontStyle: this.fontStyle, fontWeight: this.fontWeight},styles.title_text]}>{thumbnails.name}</Text>
               </View>
-              <View style={styles.percentage_container}>
+              <View style={styles.value_container}>
                 <Text className="float-sm-left" style={styles.textButton}>{thumbnails.value}{' '}{thumbnails.unit}</Text>
                 {this._arrow()}
               </View>
             </View>
           </Animated.View>
-          {this.state.isHovering  && <Text>ok</Text>}
         </TouchableOpacity>
       )
     }
   }
   
   const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      alignItems: 'center',
-      backgroundColor: '#4C626F',
-    },
     main_container: {
       height: 90,
       flexDirection: 'row',
@@ -168,7 +162,7 @@ class ThumbnailsItem extends React.Component {
     header_container: {
       flexDirection: 'row'
     },
-    percentage_container: {
+    value_container: {
       flexDirection: 'row',
       marginTop: 1,
       justifyContent: 'space-between'
@@ -194,9 +188,6 @@ class ThumbnailsItem extends React.Component {
       height: 40,
       width: 40,
       margin: 2,
-    },
-    spacer: {
-      height: 10,
     },
     arrow: {
       height: 20,
