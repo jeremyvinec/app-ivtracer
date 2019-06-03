@@ -1,5 +1,5 @@
 export function getThumbnails(data) {
-  // https://raw.githubusercontent.com/jeremyvinec/app-ivtracer/master/API/thumbnails.json
+  // https://raw.githubusercontent.com/jeremyvinec/app-ivtracer/master/src/utils/api/thumbnails.json
   // http://172.20.4.42:8081/cockpit/api/thumbnails
   return fetch('http://172.20.4.42:8081/cockpit/api/thumbnails', {
   method: 'GET',

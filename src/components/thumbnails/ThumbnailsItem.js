@@ -53,7 +53,7 @@ class ThumbnailsItem extends React.Component {
         this.icons = flow
       } else if(type === 'generic'){
         this.icons = generic
-      } else if(type === 'particle'){
+      } else if(type === 'particles'){
         this.icons = particle
       } else if(type === 'pressure'){
         this.icons = pressure
@@ -68,7 +68,7 @@ class ThumbnailsItem extends React.Component {
 
     _backgroundColor(){
       value = this.value
-      //console.log(states)
+      //console.log(value)
       if(value.includes('hs')){
         this.backgroundColor = '#ddd' // lighten-grey
       } else if(value.includes('alarm')){
@@ -135,7 +135,7 @@ class ThumbnailsItem extends React.Component {
       return (
         <TouchableOpacity>
           <Animated.View style={[{backgroundColor: this.backgroundColor, opacity: this.state.opacity},styles.button, styles.main_container]}>
-          <Image className={thumbnails.type} style={styles.imageButton} source={this.icons}/>
+          <Image style={styles.imageButton} source={this.icons}/>
             <View style={styles.content_container}>
               <View style={styles.header_container}>
                 <Text style={[{color: this.color, fontStyle: this.fontStyle, fontWeight: this.fontWeight},styles.title_text]}>{thumbnails.name}</Text>

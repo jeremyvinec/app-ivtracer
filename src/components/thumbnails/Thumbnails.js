@@ -33,6 +33,13 @@ class Thumbnails extends React.Component {
                 thumbnails: this.state.thumbnails.concat(data.thumbnails) // ajouter les vignettes à ceux que l'on a déjà récupérés, deux copies de nos tableaux pour que la concaténation fonctionne
               })
 
+            const thumbnailsIndex = data.thumbnails.findIndex(item => item.id === this.props.navigation.state.params.idThumbnails)
+            
+            // notif des boucles en alarmes
+            if(thumbnailsIndex !== -1){
+              console.log('ok')
+            }
+
         })
       }
 
