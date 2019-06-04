@@ -22,7 +22,6 @@ class ThumbnailsList extends React.Component {
           renderItem={({item}) => ( 
             <ThumbnailsItem 
               thumbnails={item} 
-              //icons
             /> 
           )}
         />
