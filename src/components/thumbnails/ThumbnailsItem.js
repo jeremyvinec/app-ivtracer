@@ -26,19 +26,25 @@ class ThumbnailsItem extends React.Component {
       this.fontWeight = 'normal',
       this.state = {
         opacity: new Animated.Value(1),
-        isLoading: false
       }
       const states = this.props.thumbnails.states
       this.value = states.split(' ')
     }
 
-    componentWillMount(){
+    componentDidMount(){
       this._getImageFromType()
       this._backgroundColor()
       this._color()
       this._arrow()
       this._animate()
-      this._localNotif()
+      //this._localNotif()
+    }
+
+    componentDidUpdate(prevProps){
+      // mise à jour des vignettes
+      if(this.props.thumbnails.id !== prevProps.thumbnails.id){
+        this._localNotif(this.props.thumbnails.id)
+      }
     }
 
     _getImageFromType(){
@@ -134,22 +140,15 @@ class ThumbnailsItem extends React.Component {
     }
 
     _localNotif() {
-      //console.log(this.props.thumbnails.findIndex(item => item.id === this.state.thumbnails.id))
-      if(this.state.isLoading){
-        console.log('ok')
-      }
-      if(this.props.thumbnails){
-        console.log('ok')
-        PushNotification.localNotification({
-          /* iOS and Android properties */
-          title: "Local stockage", // (optional)
-          message: this.props.thumbnails.name, // (required)
-          playSound: false, // (optional) default: true
-          soundName: 'default', // (optional) Sound to play when the notification is shown. Value of 'default' plays the default sound. It can be set to a custom sound such as 'android.resource://com.xyz/raw/my_sound'. It will look for the 'my_sound' audio file in 'res/raw' directory and play it. default: 'default' (default sound is played)
-          number: '10', // (optional) Valid 32 bit integer specified as string. default: none (Cannot be zero)
-          //actions: '["Yes", "No"]',  // (Android only) See the doc for notification actions to know more
-        });
-      }
+      PushNotification.localNotification({
+        /* iOS and Android properties */
+        title: "Local stockage", // (optional)
+        message: this.props.thumbnails.name, // (required)
+        playSound: false, // (optional) default: true
+        soundName: 'default', // (optional) Sound to play when the notification is shown. Value of 'default' plays the default sound. It can be set to a custom sound such as 'android.resource://com.xyz/raw/my_sound'. It will look for the 'my_sound' audio file in 'res/raw' directory and play it. default: 'default' (default sound is played)
+        number: '10', // (optional) Valid 32 bit integer specified as string. default: none (Cannot be zero)
+        //actions: '["Yes", "No"]',  // (Android only) See the doc for notification actions to know more
+      });
     }    
 
     render() {

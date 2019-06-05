@@ -20,7 +20,7 @@ class Thumbnails extends React.Component {
         this.notif = new NotifService(this.onRegister.bind(this), this.onNotif.bind(this));
       }
     
-      componentWillMount(){
+      componentDidMount(){
         this._recoverThumbnails()
       }
     
