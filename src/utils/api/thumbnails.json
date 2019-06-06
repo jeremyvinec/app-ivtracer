@@ -19,7 +19,7 @@
       "value": "31",
       "unit": "°C",
       "priority": false,
-      "states": null
+      "states": "alarm notack high"
     },{
       "id": "44_DP11000-11013",
       "name": "Chambre froide 4",
@@ -27,7 +27,7 @@
       "value": "9,7",
       "unit": "°C",
       "priority": false,
-      "states": null
+      "states": "alarm notack high"
     },{
       "id": "67_DP11200-11018",
       "name": "Ambiance Local 12",
@@ -35,7 +35,7 @@
       "value": "39,8",
       "unit": "°C",
       "priority": false,
-      "states": null
+      "states": "prealarm notack high"
     },{
       "id": "67_DP11000-11018",
       "name": "Ambiance Local 2",
@@ -43,7 +43,7 @@
       "value": "36,7",
       "unit": "°C",
       "priority": false,
-      "states": null
+      "states": "alarm notack high"
     },{
       "id": "67_DP11060-11047",
       "name": "Ambiance Local 4",
@@ -59,7 +59,7 @@
       "value": "21",
       "unit": "°C",
       "priority": false,
-      "states": null
+      "states": "prealarm notack high"
     },{
       "id": "99_DM89000-11018",
       "name": "Equipement 1",
@@ -75,7 +75,7 @@
       "value": "97,7",
       "unit": "°C",
       "priority": false,
-      "states": null
+      "states": "prealarm notack high"
     },{
       "id": "54_IU87600-11211",
       "name": "Ambiance Local 5",
@@ -83,7 +83,7 @@
       "value": "32,6",
       "unit": "°C",
       "priority": false,
-      "states": null
+      "states": "prealarm notack high"
     },{
       "id": "11_UU08999-10022",
       "name": "SAS 3",
@@ -91,7 +91,7 @@
       "value": "12",
       "unit": "Pa",
       "priority": false,
-      "states": null
+      "states": "prealarm notack high"
     },{
       "id": "11_UU97533-12008",
       "name": "Salle de production",
@@ -99,7 +99,7 @@
       "value": "-11",
       "unit": "Pa",
       "priority": false,
-      "states": null
+      "states": "prealarm notack high"
     },{
       "id": "46_BN00865-11100",
       "name": "Equipement 3",
@@ -107,7 +107,7 @@
       "value": "67",
       "unit": "%",
       "priority": false,
-      "states": null
+      "states": "prealarm notack high"
     },{
       "id": "21_YY75543-09991",
       "name": "SAS 1",
@@ -131,7 +131,7 @@
       "value": "97",
       "unit": "%",
       "priority": false,
-      "states": null
+      "states": "prealarm notack high"
     },{
       "id": "94_HH93307-10083",
       "name": "Etuve 3",
@@ -139,7 +139,7 @@
       "value": "78,4",
       "unit": "%",
       "priority": false,
-      "states": null
+      "states": "prealarm notack high"
     },{
       "id": "10_HQ67330-78850",
       "name": "Equipement 5",
@@ -147,7 +147,7 @@
       "value": "12,1",
       "unit": "%",
       "priority": false,
-      "states": null
+      "states": "prealarm notack high"
     },{
       "id": "09_NW90154-10779",
       "name": "Equipement 4",
@@ -155,7 +155,7 @@
       "value": "78",
       "unit": "%",
       "priority": false,
-      "states": null
+      "states": "prealarm notack high"
     },{
       "id": "01_JQ89994-18864",
       "name": "PSM 1",
@@ -163,7 +163,7 @@
       "value": "841",
       "unit": "ppm",
       "priority": false,
-      "states": null
+      "states": "prealarm notack high"
     },{
       "id": "90_HA67108-96543",
       "name": "PSM 2",
@@ -171,7 +171,7 @@
       "value": "120",
       "unit": "ppm",
       "priority": false,
-      "states": null
+      "states": "prealarm notack high"
     },{
       "id": "08_HH97658-11775",
       "name": "Sorbonne 2",
@@ -203,7 +203,7 @@
       "value": "ON",
       "unit": "",
       "priority": false,
-      "states": null
+      "states": "prealarm notack high"
     },{
       "id": "93_TT08643-11087",
       "name": "TOR 04",
@@ -211,7 +211,7 @@
       "value": "ON",
       "unit": "",
       "priority": false,
-      "states": null
+      "states": "prealarm notack high"
     },{
       "id": "22_DP11500-11019",
       "name": "Ambiance Local 13",
@@ -219,7 +219,7 @@
       "value": "28",
       "unit": "°C",
       "priority": false,
-      "states": null
+      "states": "prealarm notack high"
     },{
       "id": "14_DP12001-11410",
       "name": "Chambre froide 6",
@@ -227,7 +227,7 @@
       "value": "-6",
       "unit": "°C",
       "priority": false,
-      "states": null
+      "states": "prealarm notack high"
     },{
       "id": "09_HH75919-22775",
       "name": "Sorbonne 1",
@@ -235,7 +235,7 @@
       "value": "108",
       "unit": "ppm",
       "priority": false,
-      "states": null
+      "states": "prealarm notack high"
     },{
       "id": "04_DP12000-11180",
       "name": "Sorbonne 4",
@@ -243,7 +243,7 @@
       "value": "41",
       "unit": "ppm",
       "priority": false,
-      "states": null
+      "states": "prealarm notack high"
     },{
       "id": "48_YU01208-07018",
       "name": "Equipement 2",
@@ -251,7 +251,7 @@
       "value": "53,5",
       "unit": "%",
       "priority": false,
-      "states": null
+      "states": "prealarm notack high"
     },{
       "id": "99_HH95300-19083",
       "name": "Ambiance Local 5",
@@ -259,7 +259,7 @@
       "value": "17,4",
       "unit": "%",
       "priority": false,
-      "states": null
+      "states": "prealarm notack high"
     },{
       "id": "50_HQ65230-41850",
       "name": "Equipement 15",
@@ -267,7 +267,7 @@
       "value": "22,7",
       "unit": "%",
       "priority": false,
-      "states": null
+      "states": "prealarm notack high"
     },{
       "id": "14_DP75500-14015",
       "name": "Equipement 18",
@@ -275,7 +275,7 @@
       "value": "14",
       "unit": "°C",
       "priority": false,
-      "states": null
+      "states": "prealarm notack high"
     },{
       "id": "07_UN97453-15038",
       "name": "Couloir 4",
