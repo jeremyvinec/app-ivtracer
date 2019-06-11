@@ -1,7 +1,6 @@
 import React from 'react'
 import { StyleSheet, View, Text, TouchableOpacity, Image, Animated } from 'react-native'
 import PushNotification from 'react-native-push-notification';
-import { connect } from 'react-redux'
 
 // ICONS
 import temperature from '../../assets/images/types/temperature.png'
@@ -30,7 +29,6 @@ class ThumbnailsItem extends React.Component {
       }
       const states = this.props.thumbnails.states
       this.value = states.split(' ')
-      this._thumbnails = this._thumbnails.bind(this)
     }
 
     componentDidMount(){
@@ -40,15 +38,6 @@ class ThumbnailsItem extends React.Component {
       this._arrow()
       this._animate()
       //this._localNotif()
-    }
-
-    componentDidUpdate(){
-      console.log(this.props.thumbnails)
-    }
-
-    _thumbnails() {
-      const action = { type: 'UPDATE_THUMBNAILS', value: this.state.thumbnails }
-      this.props.dispatch(action)
     }
 
     _getImageFromType(){
@@ -157,7 +146,6 @@ class ThumbnailsItem extends React.Component {
 
     render() {
         const { thumbnails } = this.props;
-        console.log(this.props)
       return (
         <TouchableOpacity>
           <Animated.View style={[{backgroundColor: this.backgroundColor, opacity: this.state.opacity},styles.button, styles.main_container]}>
@@ -221,11 +209,4 @@ class ThumbnailsItem extends React.Component {
     }
   });
 
-  const mapStateToProps = (state) => {
-    return {
-      thumbnails: state.thumbnails
-    }
-  }
-  
-  //export default ThumbnailsItem
-  export default connect(mapStateToProps)(ThumbnailsItem)
+  export default ThumbnailsItem
