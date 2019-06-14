@@ -40,6 +40,13 @@ class ThumbnailsItem extends React.Component {
       //this._localNotif()
     }
 
+    componentDidUpdate(){
+      if(this.state.profileOrError === null){
+        console.log('componentDidUpdate')
+        this._localNotif()
+      }
+    }
+
     _getImageFromType(){
       const type = this.props.thumbnails.type
       //console.log(type)
@@ -75,8 +82,10 @@ class ThumbnailsItem extends React.Component {
         this.backgroundColor = '#ddd' // lighten-grey
       } else if(value.includes('alarm')){
         this.backgroundColor = '#fd5d54' // $pale-red
+        this._localNotif()
       } else if(value.includes('prealarm')){
         this.backgroundColor = '#fdb44b' // $pale-orange
+        this._localNotif()
       } else if(value.includes('prod')){
         this.backgroundColor = '#e8ffcd' // $pale-green
       }
@@ -133,15 +142,34 @@ class ThumbnailsItem extends React.Component {
     }
 
     _localNotif() {
+      thumbnails = this.props.thumbnails
+      this.lastId++;
       PushNotification.localNotification({
         /* iOS and Android properties */
-        title: "Local stockage", // (optional)
-        message: this.props.thumbnails.name, // (required)
+        title: thumbnails.name, // (optional)
+        message: thumbnails.type + ' | ' + thumbnails.value + ' ' + thumbnails.unit, // (required)
+        largeIcon: this._getImageFromType(), // (optional) default: "ic_launcher"
+        smallIcon: this._getImageFromType(), // (optional) default: "ic_notification" with fallback for "ic_launcher"
+        //bigText: "Alarme haute : 11 UU97533-12008 > 50%", // (optional) default: "message" prop
         playSound: false, // (optional) default: true
         soundName: 'default', // (optional) Sound to play when the notification is shown. Value of 'default' plays the default sound. It can be set to a custom sound such as 'android.resource://com.xyz/raw/my_sound'. It will look for the 'my_sound' audio file in 'res/raw' directory and play it. default: 'default' (default sound is played)
-        number: '10', // (optional) Valid 32 bit integer specified as string. default: none (Cannot be zero)
+        //number: '10', // (optional) Valid 32 bit integer specified as string. default: none (Cannot be zero)
         //actions: '["Yes", "No"]',  // (Android only) See the doc for notification actions to know more
-      });
+        subText: "Local stockage | " + thumbnails.states, // (optional) default: none
+        //color: "blue", // (optional) default: system default
+        vibrate: true, // (optional) default: true
+        vibration: 300, // vibration length in milliseconds, ignored if vibrate=false, default: 1000
+        tag: 'some_tag', // (optional) add tag to message
+        group: "group", // (optional) add group to message
+        ongoing: true, // (optional) set whether this is an "ongoing" notification
+        autoCancel: true, // (optional) default: true
+        ticker: "ticker", // (optional)
+
+        /* iOS only properties */
+        alertAction: 'view', // (optional) default: view
+        category: null, // (optional) default: null
+        userInfo: null, // (optional) default: null (object containing additional notification data)
+      })
     }    
 
     render() {

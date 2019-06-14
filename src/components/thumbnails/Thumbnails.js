@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, Image, Button, ActivityIndicator } from 'react-
 import ThumbnailsList from './ThumbnailsList'
 
 // Notification
-import NotifService from '../notif-service';
+import NotifService from './NotifService'
 import appConfig from '../app/app.json';
 
 // API
@@ -19,10 +19,8 @@ class Thumbnails extends React.Component {
         this.notif = new NotifService(this.onRegister.bind(this), this.onNotif.bind(this));
       }
 
-      state = []
-
       static getDerivedStateFromProps(nextProps, prevState){
-        // Stocke prevUserId dans l'état afin que nous puissions comparer lorsque les accessoires changent. 
+        // Stocke thumbnails dans l'état afin que nous puissions comparer lorsque les accessoires changent. 
         // Efface toutes les données utilisateur précédemment chargées (pour ne pas restituer les données obsolètes).
         if(nextProps.newThumbnails !== prevState.thumbnails){
           return {
@@ -43,12 +41,13 @@ class Thumbnails extends React.Component {
         if(this.state.profileOrError === null){
           // A ce stade, nous sommes dans la phase "commit", il est donc prudent de charger les nouvelles données.
           this._recoverThumbnails()
+          this.notif.localNotif()
         }
       }
 
-      componentWillUnMount(){
+      componentWillUnmount(){
         if(this._asyncRequest){
-          this._asyncRequest.cancel()
+          this._asyncRequest.cancel();
         }
       }
     
@@ -93,7 +92,6 @@ class Thumbnails extends React.Component {
                     recoverThumbnails={this._recoverThumbnails}
                   />
               </View>
-              <Button title='notif' onPress={() => this.notif.localNotif()}/>
           </View>
         )
       }

@@ -8,7 +8,7 @@
 
 import React from 'react';
 import { Button, StyleSheet, Text, View, TouchableOpacity, Alert, Image } from 'react-native';
-import NotifService from './notif-service';
+import NotifService from './thumbnails/NotifService';
 import appConfig from './app/app.json';
 
 class Display extends React.Component {
