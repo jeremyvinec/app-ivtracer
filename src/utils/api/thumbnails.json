@@ -12,6 +12,24 @@
       "unit": "°C",
       "priority": true,
       "states": "prealarm notack high"
+    },
+    {
+      "id": "55_9801200-12345",
+      "name": "Ambiance Local 1",
+      "type": "temperature",
+      "value": "39,5",
+      "unit": "°C",
+      "priority": true,
+      "states": "prealarm notack high"
+    },
+    {
+      "id": "55_9801200-56321",
+      "name": "Ambiance Local 1",
+      "type": "temperature",
+      "value": "40,5",
+      "unit": "°C",
+      "priority": true,
+      "states": "prealarm notack high"
     },{
       "id": "44_DP11000-11019",
       "name": "Ambiance Local 3",

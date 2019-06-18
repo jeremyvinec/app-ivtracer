@@ -1,7 +1,6 @@
 import React from 'react'
 import { StyleSheet, FlatList } from 'react-native'
 import ThumbnailsItem from './ThumbnailsItem'
-import NotifService from './NotifService'
 
 class ThumbnailsList extends React.Component {
 
@@ -10,12 +9,6 @@ class ThumbnailsList extends React.Component {
     this.state = {
       thumbnails: [],
     }
-    this.notif = new NotifService()
-  }
-
-  _displayNotif(){
-    console.log('ok')
-    this.notif.localNotif()
   }
 
   render() {
@@ -29,7 +22,6 @@ class ThumbnailsList extends React.Component {
           renderItem={({item}) => ( 
             <ThumbnailsItem 
               thumbnails={item}
-              displayNotif={this._displayNotif} 
             />
           )}
         />

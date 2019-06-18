@@ -18,21 +18,25 @@ class Thumbnails extends React.Component {
         thumbnails: [],
       };
       this._recoverThumbnails = this._recoverThumbnails.bind(this);
-      this.notif = new NotifService(this.onRegister.bind(this), this.onNotif.bind(this));
     }
 
     componentDidMount(){
       // Dans la plupart des cas, il est préférable d'attendre après le montage pour charger les données. 
-      this._recoverThumbnails()
+      this.interval = setInterval(this._recoverThumbnails, 1000)
+    }
+
+    componentWillUnmount(){
+      clearInterval(this.interval)
     }
 
     _recoverThumbnails() {
+      console.log('update')
       getThumbnails().then(data => {
           //console.log(data.thumbnails)
   
           // infos des vignettes
           this.setState({
-              thumbnails: this.state.thumbnails.concat(data.thumbnails) // ajouter les vignettes à ceux que l'on a déjà récupérés, deux copies de nos tableaux pour que la concaténation fonctionne
+              thumbnails: data.thumbnails
             })
   
       })

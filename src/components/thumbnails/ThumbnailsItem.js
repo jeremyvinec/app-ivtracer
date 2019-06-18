@@ -26,25 +26,9 @@ class ThumbnailsItem extends React.Component {
       this.fontWeight = 'normal',
       this.state = {
         opacity: new Animated.Value(1),
-        thumbnails: this.props.thumbnails,
-        thumbnailsId: this.props.thumbnails.id
       }
       const states = this.props.thumbnails.states
       this.value = states.split(' ')
-    }
-
-    static getDerivedStateFromProps(props, state) {
-      // Any time the current user changes,
-      // Reset any parts of state that are tied to that user.
-      // In this simple example, that's just the email.
-      if (props.id !== state.thumbnailsId) {
-        console.log('update thumbnails')
-        return {
-          thumbnailsId: props.id,
-          thumbnails: props.thumbnails
-        };
-      }
-      return null;
     }
 
     componentDidMount(){
@@ -53,6 +37,16 @@ class ThumbnailsItem extends React.Component {
       this._color()
       this._arrow()
       this._animate()
+    }
+
+    componentDidUpdate(nextProps){
+      if(nextProps.thumbnails.id != this.props.thumbnails.id){
+        console.log('new id')
+        this._localNotif()
+      } else if(nextProps.thumbnails.states != this.props.thumbnails.states){
+        console.log('new states')
+        this._localNotif()
+      }
     }
 
     _getImageFromType(){
